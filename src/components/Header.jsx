@@ -281,7 +281,9 @@ export default function Header() {
 
             <div className="mt-auto">
               {user ? (
-                <Button txt="Déconnexion" onClick={logout} variant="a" />
+                <NavLink to="/" onClick={() => setIsOpen(false)}>
+                  <Button txt="Déconnexion" onClick={logout} variant="a" />
+                </NavLink>
               ) : (
                 <div className="flex flex-col gap-2.5">
                   <NavLink to="login" onClick={() => setIsOpen(false)}>
