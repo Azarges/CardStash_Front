@@ -88,22 +88,25 @@ export default function Register() {
     }
   }
   return (
-    <div className="flex flex-col items-center justify-center pt-16 pb-24">
-      <div className="flex flex-col gap-2.5 py-9 justify-center items-center">
+    <div className="flex flex-col items-center justify-center pt-16 pb-24 max-sm:px-8 max-sm:py-8">
+      <div className="flex flex-col gap-2.5 py-9 justify-center items-center max-sm:w-full">
         <img
           src={logo}
           alt="Logo"
           className="w-25 h-25 max-sm:w-19 max-sm:h-19"
         />
-        <h2 className="text-gold font-title text-[40px] font-semibold leading-[52px]">
+        <h2 className="text-gold font-title text-[40px] font-semibold leading-[52px] max-sm:text-[26px] max-sm:leading-8.5">
           Inscription
         </h2>
       </div>
-      <form onSubmit={handleSubmit(submit)} className="flex flex-col gap-2.5">
-        <div className="flex flex-col gap-2.5 p-2.5 justify-start items-start">
+      <form
+        onSubmit={handleSubmit(submit)}
+        className="flex flex-col gap-2.5 max-sm:w-full max-sm:items-center"
+      >
+        <div className="flex flex-col gap-2.5 p-2.5 justify-start items-start min-w-[260px]">
           <label
             htmlFor="username"
-            className="text-white text-[28px] leading-[37px] font-title"
+            className="text-white text-[28px] leading-[37px] font-title max-sm:text-lg max-sm:leading-[23px] "
           >
             Pseudo
           </label>
@@ -117,10 +120,10 @@ export default function Register() {
             <p className="text-red">{errors.username.message}</p>
           )}
         </div>
-        <div className="flex flex-col gap-2.5 p-2.5 justify-start items-start">
+        <div className="flex flex-col gap-2.5 p-2.5 justify-start items-start min-w-[260px]">
           <label
             htmlFor="email"
-            className="text-white text-[28px] leading-[37px] font-title"
+            className="text-white text-[28px] leading-[37px] font-title max-sm:text-lg max-sm:leading-[23px]"
           >
             Email
           </label>
@@ -132,10 +135,10 @@ export default function Register() {
           />
           {errors.email && <p className="text-red">{errors.email.message}</p>}
         </div>
-        <div className="flex flex-col gap-2.5 p-2.5 justify-start items-start">
+        <div className="flex flex-col gap-2.5 p-2.5 justify-start items-start min-w-[260px]">
           <label
             htmlFor="password"
-            className="text-white text-[28px] leading-[37px] font-title"
+            className="text-white text-[28px] leading-[37px] font-title max-sm:text-lg max-sm:leading-[23px]"
           >
             Mot de passe
           </label>
@@ -158,10 +161,10 @@ export default function Register() {
             <p className="text-red">{errors.password.message}</p>
           )}
         </div>
-        <div className="flex flex-col gap-2.5 p-2.5 justify-start items-start">
+        <div className="flex flex-col gap-2.5 p-2.5 justify-start items-start min-w-[260px]">
           <label
             htmlFor="confirmPassword"
-            className="text-white text-[28px] leading-[37px] font-title"
+            className="text-white text-[28px] leading-[37px] font-title max-sm:text-lg max-sm:leading-[23px]"
           >
             Confirmation du mot de passe
           </label>
@@ -196,7 +199,7 @@ export default function Register() {
               id="rgpd"
               {...register("rgpd")}
             />
-            <div className="flex items-center justify-center w-6 h-6 transition border-[1px] border-gold rounded-[5px]  bg-primary-darker peer-checked:text-gold bg-bg-input text-bg-input">
+            <div className="flex items-center justify-center w-5 h-5 transition border-[1px] border-gold rounded-[5px]  bg-primary-darker peer-checked:text-gold bg-bg-input text-bg-input">
               <svg
                 className="w-4 h-4 "
                 fill="none"
@@ -211,7 +214,7 @@ export default function Register() {
                 />
               </svg>
             </div>
-            <span className="">
+            <span className="max-sm:text-[11px]">
               J'accepte la
               <span className="text-gold hover:underline">
                 {" "}
@@ -219,10 +222,14 @@ export default function Register() {
               </span>
             </span>
           </label>
-          {errors.rgpd && <p className="text-red">{errors.rgpd.message}</p>}
+          {errors.rgpd && (
+            <p className="w-full text-red">{errors.rgpd.message}</p>
+          )}
         </div>
 
-        <Button txt="S'inscrire" />
+        <div className="min-w-[260px]">
+          <Button txt="S'inscrire" />
+        </div>
       </form>
     </div>
   );
