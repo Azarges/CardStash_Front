@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+/* .active {
+  @apply text-red-500;
+} */
+
+@theme {
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-nav: #0b0b08;
+  --color-black: #0b0c0c;
+  --color-white: #fefefe;
+  --color-gold: #f5d76e;
+  --color-red: #d70011;
+  --color-darkred: #610008;
+  --color-input: #fefefe;
+  --color-bg-black: #0b0c0c;
+  --color-bg-input: #131310;
+  --color-bg-section: #111516;
+  --color-borderGold: #f5d76e;
+  --color-borderClassic: #3c3833;
+  --font-title: "EB Garamond", serif;
+}
+input:-webkit-autofill {
+  box-shadow: 0 0 0px 1000px var(--color-bg-input) inset !important;
+  -webkit-text-fill-color: var(--color-white) !important;
+  transition: background-color 9999s ease-in-out 0s;
+}
