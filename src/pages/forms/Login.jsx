@@ -89,7 +89,7 @@ export default function Login() {
           onSubmit={handleSubmit(submit)}
           className="flex flex-col mx-auto mb-6"
         >
-          <div className="flex flex-col  gap-2.5 p-2.5">
+          <div className="flex flex-col gap-2.5 p-2.5">
             <label
               htmlFor="email"
               className="text-white font-title text-[28px] leading-[37px] max-sm:leading-[23px] max-sm:text-[18px]"

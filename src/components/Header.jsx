@@ -1,14 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { NavLink } from "react-router-dom";
-import {
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-  Dialog,
-  Transition,
-} from "@headlessui/react";
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { IoMenu, IoClose } from "react-icons/io5";
 import { FaUser } from "react-icons/fa";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";

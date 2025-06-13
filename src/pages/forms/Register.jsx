@@ -1,18 +1,23 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import { signup } from "../../apis/auth.api";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useEffect } from "react";
+import logo from "../../assets/logo.png";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+
+import Button from "../../components/shared/button";
 
 export default function Register() {
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const message = params.get("message");
   const hasShownToast = useRef(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   useEffect(() => {
     if (message === "error" && !hasShownToast.current) {
@@ -71,8 +76,6 @@ export default function Register() {
     console.log(values);
     try {
       const feedback = await signup(values);
-      // console.log(feedback);
-
       if (!feedback.message) {
         reset(defaultValues);
         toast.success(feedback.messageOk);
@@ -85,87 +88,142 @@ export default function Register() {
     }
   }
   return (
-    <div className="flex-1 flex items-center justify-center">
-      <div className="w-full max-w-md p-6 bg-white shadow-xl rounded">
-        <form
-          onSubmit={handleSubmit(submit)}
-          className="flex flex-col gap-4 mb-6 mx-auto max-w-[400px]"
-        >
-          <div className="flex flex-col mb-2">
-            <label htmlFor="username" className="mb-2">
-              Pseudo
-            </label>
-            <input
-              {...register("username")}
-              type="text"
-              id="username"
-              className="border border-gray-300 rounded px-3 py-2 focus: outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            {errors.username && (
-              <p className="text-red-500">{errors.username.message}</p>
-            )}
-          </div>
-          <div className="flex flex-col mb-2">
-            <label htmlFor="email" className="mb-2">
-              Email
-            </label>
-            <input
-              {...register("email")}
-              type="email"
-              id="email"
-              className="border border-gray-300 rounded px-3 py-2 focus: outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            {errors.email && (
-              <p className="text-red-500">{errors.email.message}</p>
-            )}
-          </div>
-          <div className="flex flex-col mb-2">
-            <label htmlFor="password" className="mb-2">
-              Mot de passe
-            </label>
+    <div className="flex flex-col items-center justify-center pt-16 pb-24">
+      <div className="flex flex-col gap-2.5 py-9 justify-center items-center">
+        <img
+          src={logo}
+          alt="Logo"
+          className="w-25 h-25 max-sm:w-19 max-sm:h-19"
+        />
+        <h2 className="text-gold font-title text-[40px] font-semibold leading-[52px]">
+          Inscription
+        </h2>
+      </div>
+      <form onSubmit={handleSubmit(submit)} className="flex flex-col gap-2.5">
+        <div className="flex flex-col gap-2.5 p-2.5 justify-start items-start">
+          <label
+            htmlFor="username"
+            className="text-white text-[28px] leading-[37px] font-title"
+          >
+            Pseudo
+          </label>
+          <input
+            {...register("username")}
+            type="text"
+            id="username"
+            className="h-[35px] rounded-[5px] bg-bg-input border-[1px] border-borderGold w-full text-white px-2"
+          />
+          {errors.username && (
+            <p className="text-red">{errors.username.message}</p>
+          )}
+        </div>
+        <div className="flex flex-col gap-2.5 p-2.5 justify-start items-start">
+          <label
+            htmlFor="email"
+            className="text-white text-[28px] leading-[37px] font-title"
+          >
+            Email
+          </label>
+          <input
+            {...register("email")}
+            type="email"
+            id="email"
+            className="h-[35px] rounded-[5px] bg-bg-input border-[1px] border-borderGold w-full text-white px-2"
+          />
+          {errors.email && <p className="text-red">{errors.email.message}</p>}
+        </div>
+        <div className="flex flex-col gap-2.5 p-2.5 justify-start items-start">
+          <label
+            htmlFor="password"
+            className="text-white text-[28px] leading-[37px] font-title"
+          >
+            Mot de passe
+          </label>
+          <div className="relative w-full">
             <input
               {...register("password")}
-              type="password"
+              type={showPassword ? "text" : "password"}
               id="password"
-              className="border border-gray-300 rounded px-3 py-2 focus: outline-none focus:ring-2 focus:ring-blue-500"
+              className="h-[35px] rounded-[5px] bg-bg-input border-[1px] border-borderGold w-full text-white px-2"
             />
-            {errors.password && (
-              <p className="text-red-500">{errors.password.message}</p>
-            )}
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute inset-y-0 text-sm text-white hover:text-gold right-2"
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </button>
           </div>
-          <div className="flex flex-col mb-2">
-            <label htmlFor="confirmPassword" className="mb-2">
-              Confirmation du mot de passe
-            </label>
+          {errors.password && (
+            <p className="text-red">{errors.password.message}</p>
+          )}
+        </div>
+        <div className="flex flex-col gap-2.5 p-2.5 justify-start items-start">
+          <label
+            htmlFor="confirmPassword"
+            className="text-white text-[28px] leading-[37px] font-title"
+          >
+            Confirmation du mot de passe
+          </label>
+          <div className="relative w-full">
             <input
               {...register("confirmPassword")}
-              type="password"
+              type={showConfirmPassword ? "text" : "password"}
               id="confirmPassword"
-              className="border border-gray-300 rounded px-3 py-2 focus: outline-none focus:ring-2 focus:ring-blue-500"
+              className="h-[35px] rounded-[5px] bg-bg-input border-[1px] border-borderGold w-full text-white px-2"
             />
-            {errors.confirmPassword && (
-              <p className="text-red-500">{errors.confirmPassword.message}</p>
-            )}
+            <button
+              type="button"
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              className="absolute inset-y-0 text-sm text-white hover:text-gold right-2"
+            >
+              {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+            </button>
           </div>
-          <div className="flex flex-col mb-2">
-            <label htmlFor="rgpd" className="mb-2">
-              <input
-                {...register("rgpd")}
-                type="checkbox"
-                className="mr-4"
-                id="rgpd"
-              />
-              En soumettant ce formulaire j'accepte ...
-            </label>
-            {errors.rgpd && (
-              <p className="text-red-500">{errors.rgpd.message}</p>
-            )}
-          </div>
-          <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer">
-            S'inscrire
-          </button>
-        </form>
-      </div>
+          {errors.confirmPassword && (
+            <p className="text-red">{errors.confirmPassword.message}</p>
+          )}
+        </div>
+
+        <div className="p-2.5 justify-start flex flex-col">
+          <label
+            htmlFor="rgpd"
+            className="flex items-center gap-2.5 cursor-pointer text-white"
+          >
+            <input
+              type="checkbox"
+              className="sr-only peer"
+              id="rgpd"
+              {...register("rgpd")}
+            />
+            <div className="flex items-center justify-center w-6 h-6 transition border-[1px] border-gold rounded-[5px]  bg-primary-darker peer-checked:text-gold bg-bg-input text-bg-input">
+              <svg
+                className="w-4 h-4 "
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="3"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </div>
+            <span className="">
+              J'accepte la
+              <span className="text-gold hover:underline">
+                {" "}
+                politique de confidentialité
+              </span>
+            </span>
+          </label>
+          {errors.rgpd && <p className="text-red">{errors.rgpd.message}</p>}
+        </div>
+
+        <Button txt="S'inscrire" />
+      </form>
     </div>
   );
 }
