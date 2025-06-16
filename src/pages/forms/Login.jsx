@@ -74,7 +74,7 @@ export default function Login() {
     }
   }
   return (
-    <div className='flex-col flex justify-center items-center gap-2.5 max-sm:py-8 max-sm:px-4 pt-16 pb-24'>
+    <div className='flex-col flex justify-center items-center gap-2.5 max-sm:py-8 max-sm:px-4 py-8'>
       <img
         src={logo}
         alt='Logo'

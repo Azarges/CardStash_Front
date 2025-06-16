@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="flex flex-col justify-between w-full min-h-screen bg-gray-900 space">
+    <div className="flex flex-col justify-between w-full min-h-screen bg-[url('/bg.png')] bg-cover bg-center">
       <AuthProvider>
         <Header />
         {/* <div className="flex flex-col items-center justify-center flex-1 w-full"> */}
