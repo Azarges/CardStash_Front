@@ -100,7 +100,7 @@ export default function Login() {
               {...register("email")}
               type='email'
               id='email'
-              className='border-[1px] border-gold rounded-[5px] bg-bg-input h-9 text-white pl-2.5 w-[260px]'
+              className='border-[1px] border-gold rounded-[5px] bg-bg-input h-9 text-white pl-2.5 max-sm:w-[260px] w-80'
             />
             {errors.email && <p className='text-red'>{errors.email.message}</p>}
           </div>
@@ -116,7 +116,7 @@ export default function Login() {
                 {...register("password")}
                 type={showPassword ? "text" : "password"}
                 id='password'
-                className='border-[1px] border-gold rounded-[5px] w-[300px] bg-bg-input h-9 text-white pl-2.5 pr-20 max-sm:w-[260px]'
+                className='border-[1px] border-gold rounded-[5px]  bg-bg-input h-9 text-white pl-2.5 pr-20 max-sm:w-[260px] w-80'
               />
               <button
                 type='button'
