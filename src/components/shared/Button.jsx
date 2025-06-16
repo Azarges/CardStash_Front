@@ -29,7 +29,9 @@ export default function Button({
         className=' flex cursor-pointer bg-gold  border-[1px] border-borderClassic rounded-[5px] px-4 py-2.5 hover:bg-bg-input hover:border-gold text-bg-input hover:text-gold justify-center items-center'
         onClick={onClick}
       >
-        <div className='font-bold leading-[26px] text-xl'>{txt}</div>
+        <div className='font-bold leading-[26px] text-xl max-sm:text-[14px] max-sm:leading-[17px]'>
+          {txt}
+        </div>
       </button>
     );
   }
