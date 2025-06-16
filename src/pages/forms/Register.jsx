@@ -27,7 +27,14 @@ export default function Register() {
     }
   }, [message, navigate]);
   const schema = yup.object({
-    username: yup.string().required("Le champ est obligatoire"),
+    username: yup
+      .string()
+      .required("Veuillez entrer votre nom.")
+      .min(2, "Le nom doit contenir au moins 2 caractères.")
+      .matches(
+        /^[a-zA-ZÀ-ÿ '-]+$/,
+        "Le nom ne peut contenir que des lettres et des escapes"
+      ),
     email: yup
       .string()
       .email()

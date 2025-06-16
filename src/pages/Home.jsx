@@ -1,4 +1,9 @@
 import Button from "../components/shared/button";
+import CardDecks from "../assets/CardDecks.png";
+import CardInventory from "../assets/CardInventory.png";
+import CardTrade from "../assets/CardTrade.png";
+import { NavLink } from "react-router-dom";
+import Contact from "./forms/Contact";
 
 export default function Home() {
   return (
@@ -6,7 +11,7 @@ export default function Home() {
     <div className='flex flex-col w-full'>
       {/* Header */}
       <div
-        className='flex flex-col w-full bg-cover bg-center justify-center items-center min-h-[calc(100vh-64px)] max-sm:min-h-[calc(100vh-56px)] max-lg:items-start max-lg:pl-8 max-sm:pl-2'
+        className='flex flex-col w-full bg-cover bg-center justify-center items-center min-h-[calc(100vh-64px)] max-sm:min-h-[calc(100vh-56px)] max-lg:items-start max-lg:pl-8 max-sm:pl-2 border-b-1 border-borderGold shadow-md'
         style={{ backgroundImage: "url('/accueil.png')" }}
       >
         {/* 169 */}
@@ -28,33 +33,71 @@ export default function Home() {
         </div>
       </div>
       {/* Btoom */}
-      <div>
+      <div className='flex flex-col items-center justify-center gap-16 py-16'>
         {/* 196 */}
-        <div>
+        <div className='flex items-center justify-start gap-16 py-16 overflow-x-scroll'>
           {/* 193 */}
-          <div></div>
+          <div className='flex flex-col w-76 h-96 gap-2.5 p-2 bg-bg-section border-3 border-borderGold shadow-md rounded-[13px] max-sm:w-52 max-sm:h-65 max-xl:w-3xs max-xl:h-81'>
+            <NavLink to='/' className='w-full h-full'>
+              {/* 194 */}
+              <div className='relative rounded-[7px] border-borderGold border-1 w-full h-full p-6 flex flex-col justify-start gap-16 items-center group'>
+                <img
+                  src={CardInventory}
+                  alt='InventoryCard'
+                  className='absolute top-0 left-0 w-full h-full rounded-[40px] border-borderGold border-1 object-cover z-0 transition duration-300 group-hover:brightness-50'
+                />
+                <p className='relative z-10 text-[28px] font-title text-gold leading-[37px]'>
+                  Inventaire
+                </p>
+                <p className='relative z-10 text-white leading-[19px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-500'>
+                  Gérez facilement votre collection de cartes : visualisez,
+                  organisez et accédez rapidement à toutes vos cartes.
+                </p>
+              </div>
+            </NavLink>
+          </div>
           {/* 197 */}
-          <div></div>
+          <div className='flex flex-col w-76 h-96 gap-2.5 p-2 bg-bg-section border-3 border-borderGold shadow-md rounded-[13px] max-sm:w-52 max-sm:h-65 max-xl:w-3xs max-xl:h-81'>
+            <NavLink to='/' className='w-full h-full'>
+              {/* 194 */}
+              <div className='relative rounded-[7px] border-borderGold border-1 w-full h-full p-6 flex flex-col justify-start gap-16 items-center group'>
+                <img
+                  src={CardTrade}
+                  alt='TradeCard'
+                  className='absolute top-0 left-0 w-full h-full rounded-[40px] border-borderGold border-1 object-cover z-0 transition duration-300 group-hover:brightness-50'
+                />
+                <p className='relative z-10 text-[28px] font-title text-gold leading-[37px]'>
+                  Échanges
+                </p>
+                <p className='relative z-10 text-white leading-[19px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-500'>
+                  Échangez ou prêtez vos cartes rapidement avec
+                  d’autresutilisateurs.
+                </p>
+              </div>
+            </NavLink>
+          </div>
           {/* 196 */}
-          <div></div>
-        </div>
-        {/* 172 */}
-        <div>
-          <p></p>
-          <p></p>
-          {/* 172 */}
-          <div></div>
-          {/* 175 */}
-          <div></div>
-          {/* 181 */}
-          <div></div>
-          {/* 69 */}
-          <div></div>
-          {/* 180 */}
-          <div>
-            <Button txt='Envoyer' />
+          <div className='flex flex-col w-76 h-96 gap-2.5 p-2 bg-bg-section border-3 border-borderGold shadow-md rounded-[13px] max-sm:w-52 max-sm:h-65 max-xl:w-3xs max-xl:h-81'>
+            <NavLink to='/' className='w-full h-full'>
+              {/* 194 */}
+              <div className='relative rounded-[7px] border-borderGold border-1 w-full h-full p-6 flex flex-col justify-start gap-16 items-center group'>
+                <img
+                  src={CardDecks}
+                  alt='DecksCard'
+                  className='absolute top-0 left-0 w-full h-full rounded-[40px] border-borderGold border-1 object-cover z-0 transition duration-300 group-hover:brightness-50'
+                />
+                <p className='relative z-10 text-[28px] font-title text-gold leading-[37px]'>
+                  Decks
+                </p>
+                <p className='relative z-10 text-white leading-[19px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-500'>
+                  Créez et personnalisez vos decks en quelques clics. Planifiez
+                  vos stratégies et testez vos compositions avant chaque duel.
+                </p>
+              </div>
+            </NavLink>
           </div>
         </div>
+        <Contact />
       </div>
     </div>
   );

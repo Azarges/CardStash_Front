@@ -19,6 +19,7 @@
   --color-bg-section: #111516;
   --color-borderGold: #f5d76e;
   --color-borderClassic: #3c3833;
+  --color-placeholder: rgba(254, 254, 254, 0.5);
   --font-title: "EB Garamond", serif;
 }
 input:-webkit-autofill {
