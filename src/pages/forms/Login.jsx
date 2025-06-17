@@ -147,7 +147,7 @@ export default function Login() {
           {/* Register redirection */}
           <span className=" p-2.5 text-white leading-[19px] max-sm:leading-[14px] max-sm:text-[14px]">
             Premère visite ?{" "}
-            <NavLink to="register" className="text-gold hover:underline">
+            <NavLink to="/register" className="text-gold hover:underline">
               Créer un compte
             </NavLink>
           </span>

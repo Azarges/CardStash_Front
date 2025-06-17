@@ -2,6 +2,7 @@ import Button from "../../components/shared/button";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import toast from "react-hot-toast";
 export default function Contact() {
   const schema = yup.object({
     username: yup
@@ -53,6 +54,9 @@ export default function Contact() {
 
   async function submit(values) {
     console.log(values);
+    toast.success(
+      "Votre message à été envoyé ! Nous vous répondons dans les plus bref délais."
+    );
     reset();
   }
 
@@ -69,9 +73,9 @@ export default function Contact() {
         className="flex flex-col items-center w-full gap-6"
       >
         {/* Input username + email */}
-        <div className="flex items-center justify-center w-full gap-6">
+        <div className="flex items-center justify-center w-full gap-6 max-xl:flex-col">
           {/* input username */}
-          <div className="flex flex-col gap-2.5 justify-center items-start w-full">
+          <div className="flex flex-col gap-2.5 justify-center items-start w-1/2 max-xl:w-full">
             <label
               htmlFor="username"
               className="text-gold leading-[19px] max-sm:text-[14px] max-sm:leading-[17px]"
@@ -86,11 +90,13 @@ export default function Contact() {
               placeholder="Jean Dupont"
             />
             {errors.username && (
-              <p className="text-red">{errors.username.message}</p>
+              <p className="text-light-red text-[14px] max-sm:text-xs leading-[18px] max-sm:leading-[13px]">
+                {errors.username.message}
+              </p>
             )}
           </div>
           {/* input email */}
-          <div className="flex flex-col gap-2.5 justify-center items-start w-full">
+          <div className="flex flex-col gap-2.5 justify-center items-start w-1/2 max-xl:w-full">
             <label
               htmlFor="email"
               className="text-gold leading-[19px] max-sm:text-[14px] max-sm:leading-[17px]"
@@ -104,7 +110,11 @@ export default function Contact() {
               className="h-[35px] flex items-center justify-start p-2.5 rounded-[5px] border-1 border-borderGold placeholder:text-placeholder text-white w-full max-sm:placeholder:text-[11px] max-sm:placeholder:leading-[13px] placeholder:text-[13px] placeholder:leading-[16px]"
               placeholder="jean.dupont@email.com"
             />
-            {errors.email && <p className="text-red">{errors.email.message}</p>}
+            {errors.email && (
+              <p className="flex flex-wrap text-light-red text-[14px] max-sm:text-xs leading-[18px] max-sm:leading-[13px]">
+                {errors.email.message}
+              </p>
+            )}
           </div>
         </div>
         {/* Input Object */}
@@ -122,7 +132,11 @@ export default function Contact() {
             className="h-[35px] flex items-center justify-start p-2.5 rounded-[5px] border-1 border-borderGold placeholder:text-placeholder text-white w-full max-sm:placeholder:text-[11px] max-sm:placeholder:leading-[13px] placeholder:text-[13px] placeholder:leading-[16px]"
             placeholder="Objet de votre demande"
           />
-          {errors.object && <p className="text-red">{errors.object.message}</p>}
+          {errors.object && (
+            <p className="text-light-red text-[14px] max-sm:text-xs leading-[18px] max-sm:leading-[13px]">
+              {errors.object.message}
+            </p>
+          )}
         </div>
         {/* Input Message */}
         <div className="flex flex-col gap-2.5 justify-center items-start w-full">
@@ -140,11 +154,13 @@ export default function Contact() {
             placeholder="Expliquez votre demande ou posez votre question ici..."
           />
           {errors.message && (
-            <p className="text-red">{errors.message.message}</p>
+            <p className="text-light-red text-[14px] max-sm:text-xs leading-[18px] max-sm:leading-[13px]">
+              {errors.message.message}
+            </p>
           )}
         </div>
         {/* Checkbox authorization */}
-        <div className="flex items-start justify-start w-full">
+        <div className="flex flex-col items-start justify-start w-full gap-2.5">
           <label
             htmlFor="authorization"
             className="flex items-center gap-2.5 cursor-pointer text-white"
@@ -176,7 +192,9 @@ export default function Contact() {
             </p>
           </label>
           {errors.authorization && (
-            <p className="w-full text-red">{errors.authorization.message}</p>
+            <p className="text-light-red text-[14px] max-sm:text-xs leading-[18px] max-sm:leading-[13px]">
+              {errors.authorization.message}
+            </p>
           )}
         </div>
         {/* Button send form */}

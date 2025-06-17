@@ -3,6 +3,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { forgotPassword } from "../../../apis/auth.api";
 import toast from "react-hot-toast";
+import logo from "../../../assets/logo.png";
 
 export default function ForgotPassword() {
   const schema = yup.object({
@@ -38,8 +39,17 @@ export default function ForgotPassword() {
     toast.success(response.message);
   }
   return (
-    <div className="flex-1 flex items-center justify-center">
-      <div className="w-full max-w-md p-6 bg-white shadow-xl rounded">
+    <div className="flex items-center justify-center flex-1">
+      <img
+        src={logo}
+        alt="Logo"
+        className="w-25 h-25 max-sm:w-19 max-sm:h-19"
+      />
+
+      <h2 className="font-title text-[40px] leading-[52px] text-gold font-semibold max-sm:text-[26px] max-sm:leading-[34px]">
+        Connexion
+      </h2>
+      <div className="w-full max-w-md p-6 bg-white rounded shadow-xl">
         <form
           onSubmit={handleSubmit(submit)}
           className="flex flex-col gap-4 mb-6 mx-auto max-w-[400px]"
@@ -52,13 +62,13 @@ export default function ForgotPassword() {
               {...register("email")}
               type="email"
               id="email"
-              className="border border-gray-300 rounded px-3 py-2 focus: outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-3 py-2 border border-gray-300 rounded outline-none focus: focus:ring-2 focus:ring-blue-500"
             />
             {errors.email && (
               <p className="text-red-500">{errors.email.message}</p>
             )}
           </div>
-          <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer">
+          <button className="px-4 py-2 text-white bg-blue-500 rounded cursor-pointer hover:bg-blue-600">
             Envoyer
           </button>
         </form>
