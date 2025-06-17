@@ -110,6 +110,7 @@ export default function Register() {
         onSubmit={handleSubmit(submit)}
         className="flex flex-col max-sm:w-full max-sm:items-center"
       >
+        {/* input username */}
         <div className="flex flex-col gap-2.5 p-2.5 justify-start items-start min-w-[260px]">
           <label
             htmlFor="username"
@@ -127,6 +128,7 @@ export default function Register() {
             <p className="text-red">{errors.username.message}</p>
           )}
         </div>
+        {/* input email */}
         <div className="flex flex-col gap-2.5 p-2.5 justify-start items-start min-w-[260px]">
           <label
             htmlFor="email"
@@ -142,6 +144,7 @@ export default function Register() {
           />
           {errors.email && <p className="text-red">{errors.email.message}</p>}
         </div>
+        {/* Input password */}
         <div className="flex flex-col gap-2.5 p-2.5 justify-start items-start min-w-[260px]">
           <label
             htmlFor="password"
@@ -168,6 +171,7 @@ export default function Register() {
             <p className="text-red">{errors.password.message}</p>
           )}
         </div>
+        {/* Input confirmPassword */}
         <div className="flex flex-col gap-2.5 p-2.5 justify-start items-start min-w-[260px]">
           <label
             htmlFor="confirmPassword"
@@ -194,7 +198,7 @@ export default function Register() {
             <p className="text-red">{errors.confirmPassword.message}</p>
           )}
         </div>
-
+        {/* GDPR Consent checkbox */}
         <div className="p-2.5 justify-start flex flex-col items-start min-w-[260px]">
           <label
             htmlFor="rgpd"
@@ -233,7 +237,7 @@ export default function Register() {
             <p className="w-full text-red">{errors.rgpd.message}</p>
           )}
         </div>
-
+        {/* Button register */}
         <div className="min-w-[260px] p-2.5">
           <Button txt="S'inscrire" />
         </div>
