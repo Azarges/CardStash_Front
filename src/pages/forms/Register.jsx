@@ -95,146 +95,146 @@ export default function Register() {
     }
   }
   return (
-    <div className='flex flex-col items-center justify-center pt-16 pb-24 max-sm:p-8'>
-      <div className='flex flex-col gap-2.5 py-9 justify-center items-center max-sm:w-full max-sm:py-5'>
+    <div className="flex flex-col items-center justify-center pt-16 pb-24 max-sm:p-8">
+      <div className="flex flex-col gap-2.5 py-9 justify-center items-center max-sm:w-full max-sm:py-5">
         <img
           src={logo}
-          alt='Logo'
-          className='w-25 h-25 max-sm:w-19 max-sm:h-19'
+          alt="Logo"
+          className="w-25 h-25 max-sm:w-19 max-sm:h-19"
         />
-        <h2 className='text-gold font-title text-[40px] font-semibold leading-[52px] max-sm:text-[26px] max-sm:leading-8.5'>
+        <h2 className="text-gold font-title text-[40px] font-semibold leading-[52px] max-sm:text-[26px] max-sm:leading-8.5">
           Inscription
         </h2>
       </div>
       <form
         onSubmit={handleSubmit(submit)}
-        className='flex flex-col max-sm:w-full max-sm:items-center'
+        className="flex flex-col max-sm:w-full max-sm:items-center"
       >
-        <div className='flex flex-col gap-2.5 p-2.5 justify-start items-start min-w-[260px]'>
+        <div className="flex flex-col gap-2.5 p-2.5 justify-start items-start min-w-[260px]">
           <label
-            htmlFor='username'
-            className='text-white text-[28px] leading-[37px] font-title max-sm:text-lg max-sm:leading-[23px] '
+            htmlFor="username"
+            className="text-white text-[28px] leading-[37px] font-title max-sm:text-lg max-sm:leading-[23px] "
           >
             Pseudo
           </label>
           <input
             {...register("username")}
-            type='text'
-            id='username'
-            className='h-[35px] rounded-[5px] bg-bg-input border-[1px] border-borderGold w-full text-white px-2'
+            type="text"
+            id="username"
+            className="h-[35px] rounded-[5px] bg-bg-input border-[1px] border-borderGold w-full text-white px-2"
           />
           {errors.username && (
-            <p className='text-red'>{errors.username.message}</p>
+            <p className="text-red">{errors.username.message}</p>
           )}
         </div>
-        <div className='flex flex-col gap-2.5 p-2.5 justify-start items-start min-w-[260px]'>
+        <div className="flex flex-col gap-2.5 p-2.5 justify-start items-start min-w-[260px]">
           <label
-            htmlFor='email'
-            className='text-white text-[28px] leading-[37px] font-title max-sm:text-lg max-sm:leading-[23px]'
+            htmlFor="email"
+            className="text-white text-[28px] leading-[37px] font-title max-sm:text-lg max-sm:leading-[23px]"
           >
             Email
           </label>
           <input
             {...register("email")}
-            type='email'
-            id='email'
-            className='h-[35px] rounded-[5px] bg-bg-input border-[1px] border-borderGold w-full text-white px-2'
+            type="email"
+            id="email"
+            className="h-[35px] rounded-[5px] bg-bg-input border-[1px] border-borderGold w-full text-white px-2"
           />
-          {errors.email && <p className='text-red'>{errors.email.message}</p>}
+          {errors.email && <p className="text-red">{errors.email.message}</p>}
         </div>
-        <div className='flex flex-col gap-2.5 p-2.5 justify-start items-start min-w-[260px]'>
+        <div className="flex flex-col gap-2.5 p-2.5 justify-start items-start min-w-[260px]">
           <label
-            htmlFor='password'
-            className='text-white text-[28px] leading-[37px] font-title max-sm:text-lg max-sm:leading-[23px]'
+            htmlFor="password"
+            className="text-white text-[28px] leading-[37px] font-title max-sm:text-lg max-sm:leading-[23px]"
           >
             Mot de passe
           </label>
-          <div className='relative w-full'>
+          <div className="relative w-full">
             <input
               {...register("password")}
               type={showPassword ? "text" : "password"}
-              id='password'
-              className='h-[35px] rounded-[5px] bg-bg-input border-[1px] border-borderGold w-full text-white px-2'
+              id="password"
+              className="h-[35px] rounded-[5px] bg-bg-input border-[1px] border-borderGold w-full text-white px-2"
             />
             <button
-              type='button'
+              type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className='absolute inset-y-0 text-sm text-white hover:text-gold right-2'
+              className="absolute inset-y-0 text-sm text-white hover:text-gold right-2"
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
           </div>
           {errors.password && (
-            <p className='text-red'>{errors.password.message}</p>
+            <p className="text-red">{errors.password.message}</p>
           )}
         </div>
-        <div className='flex flex-col gap-2.5 p-2.5 justify-start items-start min-w-[260px]'>
+        <div className="flex flex-col gap-2.5 p-2.5 justify-start items-start min-w-[260px]">
           <label
-            htmlFor='confirmPassword'
-            className='text-white text-[28px] leading-[37px] font-title max-sm:text-lg max-sm:leading-[23px]'
+            htmlFor="confirmPassword"
+            className="text-white text-[28px] leading-[37px] font-title max-sm:text-lg max-sm:leading-[23px]"
           >
             Confirmation du mot de passe
           </label>
-          <div className='relative w-full'>
+          <div className="relative w-full">
             <input
               {...register("confirmPassword")}
               type={showConfirmPassword ? "text" : "password"}
-              id='confirmPassword'
-              className='h-[35px] rounded-[5px] bg-bg-input border-[1px] border-borderGold w-full text-white px-2'
+              id="confirmPassword"
+              className="h-[35px] rounded-[5px] bg-bg-input border-[1px] border-borderGold w-full text-white px-2"
             />
             <button
-              type='button'
+              type="button"
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-              className='absolute inset-y-0 text-sm text-white hover:text-gold right-2'
+              className="absolute inset-y-0 text-sm text-white hover:text-gold right-2"
             >
               {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
           </div>
           {errors.confirmPassword && (
-            <p className='text-red'>{errors.confirmPassword.message}</p>
+            <p className="text-red">{errors.confirmPassword.message}</p>
           )}
         </div>
 
-        <div className='p-2.5 justify-start flex flex-col items-start min-w-[260px]'>
+        <div className="p-2.5 justify-start flex flex-col items-start min-w-[260px]">
           <label
-            htmlFor='rgpd'
-            className='flex items-center gap-2.5 cursor-pointer text-white'
+            htmlFor="rgpd"
+            className="flex items-center gap-2.5 cursor-pointer text-white"
           >
             <input
-              type='checkbox'
-              className='sr-only peer'
-              id='rgpd'
+              type="checkbox"
+              className="sr-only peer"
+              id="rgpd"
               {...register("rgpd")}
             />
-            <div className='flex items-center justify-center w-5 h-5 transition border-[1px] border-gold rounded-[5px]  bg-primary-darker peer-checked:text-gold bg-bg-input text-bg-input'>
+            <div className="flex items-center justify-center w-5 h-5 transition border-[1px] border-gold rounded-[5px]  bg-primary-darker peer-checked:text-gold bg-bg-input text-bg-input">
               <svg
-                className='w-4 h-4 '
-                fill='none'
-                stroke='currentColor'
-                strokeWidth='3'
-                viewBox='0 0 24 24'
+                className="w-4 h-4 "
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="3"
+                viewBox="0 0 24 24"
               >
                 <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  d='M5 13l4 4L19 7'
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5 13l4 4L19 7"
                 />
               </svg>
             </div>
-            <span className='max-sm:text-[11px]'>
+            <span className="max-sm:text-[11px]">
               J'accepte la
-              <span className='text-gold hover:underline'>
+              <span className="text-gold hover:underline">
                 {" "}
                 politique de confidentialité
               </span>
             </span>
           </label>
           {errors.rgpd && (
-            <p className='w-full text-red'>{errors.rgpd.message}</p>
+            <p className="w-full text-red">{errors.rgpd.message}</p>
           )}
         </div>
 
-        <div className='min-w-[260px] p-2.5'>
+        <div className="min-w-[260px] p-2.5">
           <Button txt="S'inscrire" />
         </div>
       </form>
