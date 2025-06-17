@@ -33,7 +33,7 @@ export default function Register() {
       .min(2, "Le nom doit contenir au moins 2 caractères.")
       .matches(
         /^[a-zA-ZÀ-ÿ '-]+$/,
-        "Le nom ne peut contenir que des lettres et des escapes"
+        "Le nom ne peut contenir que des lettres et des espaces"
       ),
     email: yup
       .string()
@@ -45,9 +45,12 @@ export default function Register() {
       ),
     password: yup
       .string()
-      .required("Le champ est obligatoire")
-      .min(5, "trop court")
-      .max(10, "trop long"),
+      .required("Mot de passe requis")
+      .min(8, "Minimum 8 caractères")
+      .matches(/[a-z]/, "Doit contenir une minuscule")
+      .matches(/[A-Z]/, "Doit contenir une majuscule")
+      .matches(/\d/, "Doit contenir un chiffre")
+      .matches(/[^A-Za-z0-9]/, "Doit contenir un catactère spécial"),
     confirmPassword: yup
       .string()
       .required("Le champ est obligatoire")
@@ -76,7 +79,7 @@ export default function Register() {
   } = useForm({
     defaultValues,
     resolver: yupResolver(schema),
-    mode: "onChange",
+    mode: "onSubmit",
   });
 
   async function submit(values) {
@@ -142,7 +145,9 @@ export default function Register() {
             id="email"
             className="h-[35px] rounded-[5px] bg-bg-input border-[1px] border-borderGold w-full text-white px-2"
           />
-          {errors.email && <p className="text-red">{errors.email.message}</p>}
+          {errors.email && (
+            <p className="relative text-red">{errors.email.message}</p>
+          )}
         </div>
         {/* Input password */}
         <div className="flex flex-col gap-2.5 p-2.5 justify-start items-start min-w-[260px]">

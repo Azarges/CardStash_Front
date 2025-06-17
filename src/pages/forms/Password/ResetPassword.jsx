@@ -40,7 +40,7 @@ export default function ResetPassword() {
   } = useForm({
     defaultValues,
     resolver: yupResolver(schema),
-    mode: "onChange",
+    mode: "onSubmit",
   });
 
   async function submit(values) {
@@ -50,7 +50,7 @@ export default function ResetPassword() {
       password: values.password,
       token: token,
     });
-
+    reset();
     //  objet qu'on envoie { password: azerty, token :azqdesfgxhcgfds...}
     console.log(response);
     if (response.messageOk) {
