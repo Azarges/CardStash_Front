@@ -56,12 +56,12 @@ export default function Header() {
           >
             <div className="flex-col ">
               <MenuItem>
-                <a
-                  href="#"
+                <NavLink
+                  to="/search"
                   className="flex px-4 py-2 text-sm text-gold data-focus:bg-bg-section data-focus:outline-hidden text-[13px] font-semibold justify-center items-center"
                 >
                   Recherche carte
-                </a>
+                </NavLink>
               </MenuItem>
               <MenuItem>
                 <a

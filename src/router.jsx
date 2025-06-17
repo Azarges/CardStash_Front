@@ -11,6 +11,7 @@ import { rootLoader } from "./loaders/rootLoader";
 import ForgotPassword from "./pages/forms/Password/ForgotPassword";
 import ResetPassword from "./pages/forms/Password/ResetPassword";
 import Home from "./pages/Home";
+import SearchCard from "./pages/SearchCard";
 
 export const router = createBrowserRouter([
   {
@@ -69,6 +70,10 @@ export const router = createBrowserRouter([
             element: <Data />,
           },
         ],
+      },
+      {
+        path: "/search",
+        element: <SearchCard />,
       },
     ],
   },
