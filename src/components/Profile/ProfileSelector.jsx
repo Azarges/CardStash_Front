@@ -17,7 +17,7 @@ export default function ProfileSelector() {
   return (
     <div className="w-full ">
       {/* onglets */}
-      <div className="flex justify-between gap-6 mb-6 border-b-2 border-b-borderGold">
+      <div className="flex gap-6 mb-6 overflow-x-auto border-b-2 scrollbar-hide sm:justify-between border-b-borderGold">
         {tabs.map((tab) => (
           <button
             key={tab.id}
@@ -25,7 +25,7 @@ export default function ProfileSelector() {
             className={`text-lg font-semibold transition-colors duration-200 ${
               activeTab === tab.id
                 ? "text-gold border-b-3 border-borderGold"
-                : "text-white"
+                : "text-white hover:text-gold"
             }`}
           >
             {tab.label}
