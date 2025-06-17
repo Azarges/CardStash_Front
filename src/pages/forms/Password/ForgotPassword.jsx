@@ -35,10 +35,10 @@ export default function ForgotPassword() {
   });
 
   async function submit(values) {
-    // console.log(values); { email: "john@test.fr"}
     const response = await forgotPassword(values);
     console.log(response); // { message: "bien reçu"}
     toast.success(response.message);
+    reset();
   }
   return (
     <div className="flex flex-col items-center justify-center flex-1 max-sm:px-5 max-sm:py-7.5 gap-2.5">
