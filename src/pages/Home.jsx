@@ -7,14 +7,12 @@ import Contact from "./forms/Contact";
 
 export default function Home() {
   return (
-    // body
     <div className="flex flex-col w-full">
-      {/* Header */}
+      {/* Landing page */}
       <div
         className="flex flex-col w-full bg-cover bg-center justify-center items-center min-h-[calc(100vh-64px)] max-sm:min-h-[calc(100vh-56px)] max-lg:items-start max-lg:pl-8 max-sm:pl-2 border-b-1 border-borderGold shadow-md"
         style={{ backgroundImage: "url('/accueil.png')" }}
       >
-        {/* 169 */}
         <div className="flex flex-col w-5xl gap-8 p-2.5 justify-start items-start max-lg:w-auto">
           <p className="text-gold font-title text-5xl leading-[63px] tracking-[0.02em] font-bold max-sm:text-3xl max-sm:leading-[39px]">
             Votre collection
@@ -32,14 +30,12 @@ export default function Home() {
           <Button txt="Accéder à mon inventaire" variant="landing" />
         </div>
       </div>
-      {/* Btoom */}
       <div className="flex flex-col items-center justify-center w-full gap-16 py-16 max-md:px-4">
-        {/* 196 */}
+        {/* Cards overflow */}
         <div className="flex items-center justify-center w-full gap-16 py-16 overflow-x-auto max-lg:justify-start scroll-smooth overflow max-sm:px-4 max-lg:px-12">
-          {/* 193 */}
+          {/* Card 1 Inventory */}
           <div className="flex flex-col  gap-2.5 p-2 bg-bg-section border-3 border-borderGold shadow-md rounded-[13px] max-sm:w-52 max-sm:h-65 max-xl:w-3xs max-xl:h-81 w-76 h-96 shrink-0">
             <NavLink to="/" className="w-full h-full">
-              {/* 194 */}
               <div className="relative rounded-[7px] border-borderGold border-1 p-6 flex flex-col justify-start gap-16 items-center group w-full h-full">
                 <img
                   src={CardInventory}
@@ -56,10 +52,9 @@ export default function Home() {
               </div>
             </NavLink>
           </div>
-          {/* 197 */}
+          {/* Card 2 Trade */}
           <div className="flex flex-col  gap-2.5 p-2 bg-bg-section border-3 border-borderGold shadow-md rounded-[13px] max-sm:w-52 max-sm:h-65 max-xl:w-3xs max-xl:h-81 w-76 h-96 shrink-0">
             <NavLink to="/" className="w-full h-full">
-              {/* 194 */}
               <div className="relative rounded-[7px] border-borderGold border-1 p-6 flex flex-col justify-start gap-16 items-center group w-full h-full">
                 <img
                   src={CardTrade}
@@ -76,10 +71,9 @@ export default function Home() {
               </div>
             </NavLink>
           </div>
-          {/* 196 */}
+          {/* Card 3 decks */}
           <div className="flex flex-col gap-2.5 p-2 bg-bg-section border-3 border-borderGold shadow-md rounded-[13px] max-sm:w-52 max-sm:h-65 max-xl:w-3xs max-xl:h-81 w-76 h-96 shrink-0 ">
             <NavLink to="/" className="w-full h-full">
-              {/* 194 */}
               <div className="relative rounded-[7px] border-borderGold border-1 p-6 flex flex-col justify-start gap-16 items-center group w-full h-full">
                 <img
                   src={CardDecks}
@@ -97,6 +91,7 @@ export default function Home() {
             </NavLink>
           </div>
         </div>
+        {/* Contact */}
         <Contact />
       </div>
     </div>
