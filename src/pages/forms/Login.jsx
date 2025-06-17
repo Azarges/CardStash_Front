@@ -74,75 +74,80 @@ export default function Login() {
     }
   }
   return (
-    <div className='flex-col flex justify-center items-center gap-2.5 max-sm:py-8 max-sm:px-4 py-8'>
+    <div className="flex-col flex justify-center items-center gap-2.5 max-sm:py-8 max-sm:px-4 py-8">
       <img
         src={logo}
-        alt='Logo'
-        className='w-25 h-25 max-sm:w-19 max-sm:h-19'
+        alt="Logo"
+        className="w-25 h-25 max-sm:w-19 max-sm:h-19"
       />
 
-      <h2 className='font-title text-[40px] leading-[52px] text-gold font-semibold max-sm:text-[26px] max-sm:leading-[34px]'>
+      <h2 className="font-title text-[40px] leading-[52px] text-gold font-semibold max-sm:text-[26px] max-sm:leading-[34px]">
         Connexion
       </h2>
-      <div className='flex items-center justify-center flex-1'>
+      <div className="flex items-center justify-center flex-1">
+        {/* Login form */}
         <form
           onSubmit={handleSubmit(submit)}
-          className='flex flex-col mx-auto mb-6'
+          className="flex flex-col mx-auto mb-6"
         >
-          <div className='flex flex-col gap-2.5 p-2.5'>
+          {/* Input email */}
+          <div className="flex flex-col gap-2.5 p-2.5">
             <label
-              htmlFor='email'
-              className='text-white font-title text-[28px] leading-[37px] max-sm:leading-[23px] max-sm:text-[18px]'
+              htmlFor="email"
+              className="text-white font-title text-[28px] leading-[37px] max-sm:leading-[23px] max-sm:text-[18px]"
             >
               Adresse e-mail
             </label>
             <input
               {...register("email")}
-              type='email'
-              id='email'
-              className='border-[1px] border-gold rounded-[5px] bg-bg-input h-9 text-white pl-2.5 max-sm:w-[260px] w-80'
+              type="email"
+              id="email"
+              className="border-[1px] border-gold rounded-[5px] bg-bg-input h-9 text-white pl-2.5 max-sm:w-[260px] w-80"
             />
-            {errors.email && <p className='text-red'>{errors.email.message}</p>}
+            {errors.email && <p className="text-red">{errors.email.message}</p>}
           </div>
-          <div className='flex flex-col  gap-2.5 p-2.5'>
+          {/* input password */}
+          <div className="flex flex-col  gap-2.5 p-2.5">
             <label
-              htmlFor='password'
-              className='text-white font-title text-[28px] leading-[37px] max-sm:leading-[23px] max-sm:text-[18px]'
+              htmlFor="password"
+              className="text-white font-title text-[28px] leading-[37px] max-sm:leading-[23px] max-sm:text-[18px]"
             >
               Mot de passe
             </label>
-            <div className='relative'>
+            <div className="relative">
               <input
                 {...register("password")}
                 type={showPassword ? "text" : "password"}
-                id='password'
-                className='border-[1px] border-gold rounded-[5px]  bg-bg-input h-9 text-white pl-2.5 pr-20 max-sm:w-[260px] w-80'
+                id="password"
+                className="border-[1px] border-gold rounded-[5px]  bg-bg-input h-9 text-white pl-2.5 pr-20 max-sm:w-[260px] w-80"
               />
               <button
-                type='button'
+                type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className='absolute inset-y-0 text-sm text-white hover:text-gold right-2'
+                className="absolute inset-y-0 text-sm text-white hover:text-gold right-2"
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
             {errors.password && (
-              <p className='text-red'>{errors.password.message}</p>
+              <p className="text-red">{errors.password.message}</p>
             )}
           </div>
-
+          {/* Forgot password */}
           <NavLink
-            to='/forgot'
-            className='text-white  p-2.5 leading-[19px] hover:underline max-sm:leading-[14px] max-sm:text-[14px]'
+            to="/forgot"
+            className="text-white  p-2.5 leading-[19px] hover:underline max-sm:leading-[14px] max-sm:text-[14px]"
           >
             Mot de passe oublié ?
           </NavLink>
-          <div className=' p-2.5'>
-            <Button txt='Se connecter' />
+          {/* Login button */}
+          <div className=" p-2.5">
+            <Button txt="Se connecter" />
           </div>
-          <span className=' p-2.5 text-white leading-[19px] max-sm:leading-[14px] max-sm:text-[14px]'>
+          {/* Register redirection */}
+          <span className=" p-2.5 text-white leading-[19px] max-sm:leading-[14px] max-sm:text-[14px]">
             Premère visite ?{" "}
-            <NavLink to='register' className='text-gold hover:underline'>
+            <NavLink to="register" className="text-gold hover:underline">
               Créer un compte
             </NavLink>
           </span>
