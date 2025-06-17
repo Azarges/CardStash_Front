@@ -57,7 +57,6 @@ export default function Contact() {
   }
 
   return (
-    //    172
     <div className="flex flex-col gap-6 justify-center items-center p-8 rounded-[5px] bg-bg-section border-1 border-borderGold min-xl:w-6xl m-auto">
       <p className="text-white text-[28px] leading-[37px] font-title max-sm:text-lg max-sm:leading-[23px]">
         Une question ? Une suggestion ?
@@ -69,9 +68,9 @@ export default function Contact() {
         onSubmit={handleSubmit(submit)}
         className="flex flex-col items-center w-full gap-6"
       >
-        {/* 845 */}
+        {/* Input username + email */}
         <div className="flex items-center justify-center w-full gap-6">
-          {/* 173 */}
+          {/* input username */}
           <div className="flex flex-col gap-2.5 justify-center items-start w-full">
             <label
               htmlFor="username"
@@ -90,7 +89,7 @@ export default function Contact() {
               <p className="text-red">{errors.username.message}</p>
             )}
           </div>
-          {/* 174 */}
+          {/* input email */}
           <div className="flex flex-col gap-2.5 justify-center items-start w-full">
             <label
               htmlFor="email"
@@ -108,7 +107,7 @@ export default function Contact() {
             {errors.email && <p className="text-red">{errors.email.message}</p>}
           </div>
         </div>
-        {/* 175 */}
+        {/* Input Object */}
         <div className="flex flex-col gap-2.5 justify-center items-start w-full">
           <label
             htmlFor="object"
@@ -125,7 +124,7 @@ export default function Contact() {
           />
           {errors.object && <p className="text-red">{errors.object.message}</p>}
         </div>
-        {/* 181 */}
+        {/* Input Message */}
         <div className="flex flex-col gap-2.5 justify-center items-start w-full">
           <label
             htmlFor="message"
@@ -144,7 +143,7 @@ export default function Contact() {
             <p className="text-red">{errors.message.message}</p>
           )}
         </div>
-        {/* 69 */}
+        {/* Checkbox authorization */}
         <div className="flex items-start justify-start w-full">
           <label
             htmlFor="authorization"
@@ -180,7 +179,7 @@ export default function Contact() {
             <p className="w-full text-red">{errors.authorization.message}</p>
           )}
         </div>
-        {/* 180 */}
+        {/* Button send form */}
         <div className="w-fit">
           <Button txt="Envoyer" />
         </div>
