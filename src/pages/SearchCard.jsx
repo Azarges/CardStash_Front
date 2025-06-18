@@ -4,6 +4,7 @@ import * as yup from "yup";
 import Button from "../components/shared/button";
 import sets from "../data/sets.json";
 import Select from "react-select";
+import CustomMultiSelect from "../components/SearchCard.jsx/CustomMultiSelect";
 
 export default function SearchCard() {
   const schema = yup.object().shape({
@@ -174,7 +175,7 @@ export default function SearchCard() {
         {/* 293 */}
         <div className='flex items-start justify-center px-2 py-8 w-9/10'>
           {/* 292 */}
-          <div className='flex justify-start w-50 '>
+          <div className='flex justify-start w-50'>
             <label
               htmlFor='name'
               className='leading-[19px] max-sm:leading-[17px] max-sm:text-[14px] text-gold'
@@ -183,7 +184,7 @@ export default function SearchCard() {
             </label>
           </div>
           {/* nom */}
-          <div className='flex flex-col items-start justify-start gap-2.5 '>
+          <div className='flex flex-col items-start justify-start gap-2.5 w-100'>
             {/* input */}
             <input
               {...register("name")}
@@ -208,28 +209,20 @@ export default function SearchCard() {
               Extension
             </label>
           </div>
-          <div className='flex flex-col items-start justify-start gap-2.5'>
+          <div className='flex flex-col items-start justify-start gap-2.5  w-100'>
             <Controller
               name='extension'
               control={control}
               render={({ field }) => (
-                <Select
-                  {...field}
+                <CustomMultiSelect
                   options={setOptions}
-                  isMulti
-                  inputId='set'
-                  isSearchable
-                  getOptionLabel={(e) => `${e.label} (${e.code.toUpperCase()})`}
-                  getOptionValue={(e) => e.value}
-                  formatOptionLabel={formatOptionLabel}
-                  className='w-[400px] text-black'
-                  classNamePrefix='react-select'
-                  onChange={(selected) =>
-                    field.onChange(selected.map((s) => s.value))
-                  }
-                  value={setOptions.filter((option) =>
-                    field.value?.includes(option.value)
+                  value={setOptions.filter((opt) =>
+                    field.value?.includes(opt.value)
                   )}
+                  onChange={(selected) =>
+                    field.onChange(selected.map((option) => option.value))
+                  }
+                  placeholder='Sélectionnez des extensions'
                 />
               )}
             />
