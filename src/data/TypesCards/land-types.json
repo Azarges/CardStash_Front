@@ -1,0 +1,24 @@
+{
+  "object": "catalog",
+  "uri": "https://api.scryfall.com/catalog/land-types",
+  "total_values": 17,
+  "data": [
+    "Cave",
+    "Cloud",
+    "Desert",
+    "Forest",
+    "Gate",
+    "Island",
+    "Lair",
+    "Locus",
+    "Mine",
+    "Mountain",
+    "Sphere",
+    "Plains",
+    "Power-Plant",
+    "Swamp",
+    "Tower",
+    "Town",
+    "Urza's"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "object": "catalog",
+  "uri": "https://api.scryfall.com/catalog/enchantment-types",
+  "total_values": 12,
+  "data": [
+    "Aura",
+    "Background",
+    "Cartouche",
+    "Case",
+    "Class",
+    "Curse",
+    "Role",
+    "Room",
+    "Rune",
+    "Saga",
+    "Shard",
+    "Shrine"
+  ]
+}

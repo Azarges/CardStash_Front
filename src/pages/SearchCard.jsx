@@ -3,14 +3,15 @@ import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
 import Button from "../components/shared/button";
 import sets from "../data/sets.json";
-import Select from "react-select";
 import CustomMultiSelect from "../components/SearchCard.jsx/CustomMultiSelect";
-
+import CustomTypeSelect from "../components/SearchCard.jsx/CustomTypeSelect";
+import artefactTypes from "../data/TypesCards/artefactTypes.json";
+import cardTypes from "../data/TypesCards/cardTypes.json";
 export default function SearchCard() {
   const schema = yup.object().shape({
     name: yup.string().nullable(),
     extension: yup.array().of(yup.string()).nullable(), //codes comme war, ima, dmu ...
-    type: yup.string().nullable(),
+    type: yup.array().of(yup.string()).nullable(),
     text: yup.string().nullable(),
     colors: yup
       .array()
@@ -154,15 +155,10 @@ export default function SearchCard() {
     icon: set.icon_svg_uri,
     code: set.code,
   }));
-
-  const formatOptionLabel = ({ label, icon, code }) => (
-    <div className='flex items-center gap-2'>
-      <img src={icon} alt={label} className='w-5 h-5' />
-      <span>
-        {label} ({code.toUpperCase()})
-      </span>
-    </div>
-  );
+  const typesData = [
+    { name: "Artefact Types", data: artefactTypes.data },
+    { name: "Card Types", data: cardTypes.data },
+  ];
 
   return (
     // 279
@@ -231,11 +227,35 @@ export default function SearchCard() {
             </p>
           </div>
         </div>
-        {/* 295 */}
-        <div></div>
-        {/* 302 */}
-        <div></div>
-        {/* 301 */}
+
+        {/* Sélection des types */}
+        <div className='flex items-start justify-center px-2 py-8 w-9/10'>
+          <div className='flex justify-start w-50'>
+            <label
+              htmlFor='type'
+              className='leading-[19px] max-sm:leading-[17px] max-sm:text-[14px] text-gold'
+            >
+              Types de carte
+            </label>
+          </div>
+          <div className='flex flex-col items-start justify-start gap-2.5 w-100'>
+            <Controller
+              name='type'
+              control={control}
+              render={({ field }) => (
+                <CustomTypeSelect
+                  datasets={typesData}
+                  value={field.value || []}
+                  onChange={field.onChange}
+                  placeholder='Sélectionnez un ou plusieurs types'
+                />
+              )}
+            />
+            <p className='text-placeholder text-[13px] leading-[16px]'>
+              Sélectionnez un ou plusieurs types de cartes.
+            </p>
+          </div>
+        </div>
         <Button txt='rechercher' />
       </form>
     </div>

@@ -1,0 +1,24 @@
+{
+  "object": "catalog",
+  "uri": "https://api.scryfall.com/catalog/card-types",
+  "total_values": 17,
+  "data": [
+    "Artifact",
+    "Battle",
+    "Conspiracy",
+    "Creature",
+    "Dungeon",
+    "Emblem",
+    "Enchantment",
+    "Hero",
+    "Instant",
+    "Kindred",
+    "Land",
+    "Phenomenon",
+    "Plane",
+    "Planeswalker",
+    "Scheme",
+    "Sorcery",
+    "Vanguard"
+  ]
+}
