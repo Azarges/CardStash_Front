@@ -59,23 +59,21 @@ export default function SearchCard() {
       .of(yup.string().oneOf(["commun", "uncommon", "rare", "mythic"]))
       .nullable(),
     legality: yup
-      .object()
-      .of(
-        yup.object({
-          status: yup.string().oneOf(["legal", "restricted", "banned"]),
-          format: yup
-            .string()
-            .oneOf([
-              "standard",
-              "commander",
-              "modern",
-              "legacy",
-              "pauper",
-              "duel",
-              "vintage",
-            ]),
-        })
-      )
+      .object({
+        status: yup.string().oneOf(["legal", "restricted", "banned"]),
+        format: yup
+          .string()
+          .oneOf([
+            "standard",
+            "commander",
+            "modern",
+            "legacy",
+            "pauper",
+            "duel",
+            "vintage",
+          ]),
+      })
+
       .nullable(),
     sort: yup
       .object({
@@ -158,7 +156,7 @@ export default function SearchCard() {
           {/* 292 */}
           <div className='flex justify-start w-50 '>
             <label
-              htmlFor='nomCarte'
+              htmlFor='name'
               className='leading-[19px] max-sm:leading-[17px] max-sm:text-[14px] text-gold'
             >
               Nom de la carte
@@ -168,9 +166,9 @@ export default function SearchCard() {
           <div className='flex flex-col items-start justify-start gap-2.5 '>
             {/* input */}
             <input
-              {...register("nomCarte")}
+              {...register("name")}
               type='text'
-              id='nomCarte'
+              id='name'
               className='w-75 h-[35px] p-2.5 text-white rounded-[5px] bg-bg-input border-1 border-borderGold'
             />
             {/* texte */}
