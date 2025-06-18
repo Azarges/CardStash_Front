@@ -3,6 +3,7 @@ import ProfileWants from "./ProfileWants";
 import ProfileHistory from "./ProfileHistory";
 import ProfileDecks from "./ProfileDecks";
 import ProfileFriends from "./ProfileFriends";
+import HorizontalScrollWrapper from "../shared/HorizontalScrollWrapper";
 
 export default function ProfileSelector() {
   const [activeTab, setActiveTab] = useState("decks");
@@ -21,7 +22,7 @@ export default function ProfileSelector() {
   return (
     <div className='w-full '>
       {/* onglets */}
-      <div className='flex gap-6 mb-6 overflow-x-auto border-b-2 scrollbar-hide sm:justify-between border-b-borderGold'>
+      <HorizontalScrollWrapper className='flex gap-6 mb-6 overflow-x-auto border-b-2 scrollbar-hide sm:justify-between border-b-borderGold'>
         {tabs.map((tab) => (
           <button
             key={tab.id}
@@ -36,7 +37,7 @@ export default function ProfileSelector() {
             <span className='hidden sm:block'>{tab.label}</span>
           </button>
         ))}
-      </div>
+      </HorizontalScrollWrapper>
       {/* contenu dynamique */}
       <div className='p-6 text-white bg-gray-800 rounded-lg shadow'>
         {activeTab === "decks" && <ProfileDecks />}
