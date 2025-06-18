@@ -1,7 +1,10 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
 import Button from "../components/shared/button";
+import sets from "../data/sets.json";
+import Select from "react-select";
+
 export default function SearchCard() {
   const schema = yup.object().shape({
     name: yup.string().nullable(),
@@ -131,6 +134,7 @@ export default function SearchCard() {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
     reset,
   } = useForm({
@@ -142,6 +146,22 @@ export default function SearchCard() {
   async function submit(values) {
     console.log(values);
   }
+
+  const setOptions = sets.data.map((set) => ({
+    label: set.name,
+    value: set.code,
+    icon: set.icon_svg_uri,
+    code: set.code,
+  }));
+
+  const formatOptionLabel = ({ label, icon, code }) => (
+    <div className='flex items-center gap-2'>
+      <img src={icon} alt={label} className='w-5 h-5' />
+      <span>
+        {label} ({code.toUpperCase()})
+      </span>
+    </div>
+  );
 
   return (
     // 279
@@ -180,27 +200,41 @@ export default function SearchCard() {
 
         {/* 298 */}
         <div className='flex items-start justify-center px-2 py-8 w-9/10'>
-          {/* 292 */}
-          <div className='flex justify-start w-50 '>
+          <div className='flex justify-start w-50'>
             <label
-              htmlFor='extension'
+              htmlFor='set'
               className='leading-[19px] max-sm:leading-[17px] max-sm:text-[14px] text-gold'
             >
               Extension
             </label>
           </div>
-          {/* nom */}
-          <div className='flex flex-col items-start justify-start gap-2.5 '>
-            {/* input */}
-            <input
-              {...register("extension")}
-              type='text'
-              id='extension'
-              className='w-75 h-[35px] p-2.5 text-white rounded-[5px] bg-bg-input border-1 border-borderGold'
+          <div className='flex flex-col items-start justify-start gap-2.5'>
+            <Controller
+              name='extension'
+              control={control}
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  options={setOptions}
+                  isMulti
+                  inputId='set'
+                  isSearchable
+                  getOptionLabel={(e) => `${e.label} (${e.code.toUpperCase()})`}
+                  getOptionValue={(e) => e.value}
+                  formatOptionLabel={formatOptionLabel}
+                  className='w-[400px] text-black'
+                  classNamePrefix='react-select'
+                  onChange={(selected) =>
+                    field.onChange(selected.map((s) => s.value))
+                  }
+                  value={setOptions.filter((option) =>
+                    field.value?.includes(option.value)
+                  )}
+                />
+              )}
             />
-            {/* texte */}
-            <p className='text-placeholder text-[13px] leading-[16px] '>
-              Rechercher des cartes parmis une ou plusieurs extensions
+            <p className='text-placeholder text-[13px] leading-[16px]'>
+              Sélectionnez une ou plusieurs extensions.
             </p>
           </div>
         </div>
