@@ -8,16 +8,20 @@ export default function ProfileSelector() {
   const [activeTab, setActiveTab] = useState("decks");
 
   const tabs = [
-    { id: "decks", label: "Mes decks" },
-    { id: "historique", label: "Historique de transaction" },
-    { id: "souhaits", label: "Mes souhaits" },
-    { id: "amis", label: "Amis" },
+    { id: "decks", label: "Mes decks", shortLabel: "Decks" },
+    {
+      id: "historique",
+      label: "Historique de transaction",
+      shortLabel: "Historique",
+    },
+    { id: "souhaits", label: "Mes souhaits", shortLabel: "Souhaits" },
+    { id: "amis", label: "Amis", shortLabel: "Amis" },
   ];
 
   return (
-    <div className="w-full ">
+    <div className='w-full '>
       {/* onglets */}
-      <div className="flex gap-6 mb-6 overflow-x-auto border-b-2 scrollbar-hide sm:justify-between border-b-borderGold">
+      <div className='flex gap-6 mb-6 overflow-x-auto border-b-2 scrollbar-hide sm:justify-between border-b-borderGold'>
         {tabs.map((tab) => (
           <button
             key={tab.id}
@@ -28,12 +32,13 @@ export default function ProfileSelector() {
                 : "text-white hover:text-gold"
             }`}
           >
-            {tab.label}
+            <span className='block sm:hidden'>{tab.shortLabel}</span>
+            <span className='hidden sm:block'>{tab.label}</span>
           </button>
         ))}
       </div>
       {/* contenu dynamique */}
-      <div className="p-6 text-white bg-gray-800 rounded-lg shadow">
+      <div className='p-6 text-white bg-gray-800 rounded-lg shadow'>
         {activeTab === "decks" && <ProfileDecks />}
         {activeTab === "historique" && <ProfileHistory />}
         {activeTab === "souhaits" && <ProfileWants />}
