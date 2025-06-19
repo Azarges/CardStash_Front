@@ -277,6 +277,7 @@ export default function SearchCard() {
         {/* Plus d'option */}
         <div className="flex justify-end px-2 py-8 w-9/10 max-sm:w-full border-b-1 border-borderGold ">
           <button
+            type="button"
             className="flex items-center gap-2 hover:cursor-pointer text-gold hover:text-gold/70"
             onClick={() => {
               setShowMore(!showMore);
