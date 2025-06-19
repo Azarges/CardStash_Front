@@ -9,6 +9,7 @@ import CustomTypeSelect from "../components/SearchCard.jsx/CustomTypeSelect";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import CustomInputSymbology from "../components/SearchCard.jsx/CustomInputSymbology";
+import CustomColorsInput from "../components/SearchCard.jsx/CustomColorsInput";
 
 export default function SearchCard() {
   const [showMore, setShowMore] = useState(false);
@@ -25,10 +26,7 @@ export default function SearchCard() {
           .oneOf(["White", "Blue", "Black", "Red", "Green", "Colorless"])
       )
       .nullable(),
-    colorsMatch: yup
-      .string()
-      .oneOf(["include", "exact", "atMost"])
-      .default("include"),
+    colorsMatch: yup.string().oneOf(["=", ">=", "<="]).default("="),
     commanderColors: yup
       .array()
       .of(
@@ -294,6 +292,8 @@ export default function SearchCard() {
           </div>
         )}
 
+        {showMore && <CustomColorsInput />}
+
         {/* Plus d'option */}
         <div className="flex justify-end px-2 py-8 w-9/10 max-sm:w-full border-b-1 border-borderGold ">
           <button
@@ -322,7 +322,8 @@ export default function SearchCard() {
         </div>
 
         {/* Bouton */}
-        <div className="flex items-center justify-center pt-8 w-50 max-sm:w-full">
+        <div className="flex items-center justify-center gap-16 pt-8 w-100 max-sm:w-full">
+          <Button txt="Reset" variant="important" onClick={() => reset()} />
           <Button txt="Rechercher" />
         </div>
       </form>

@@ -131,27 +131,24 @@ export default function CustomTypeSelect({
           />
 
           {/* Affichage des groupes d'options */}
-          {datasets.map((dataset, index) => {
-            const groupLabel = `Groupe ${index + 1}`;
+          {datasets.map((dataset) => {
+            const groupLabel = dataset.name;
             const filteredData = filteredOptions(dataset.data); // Filtre les options déjà sélectionnées
-            return (
+
+            return filteredData.length === 0 ? null : (
               <div key={groupLabel}>
-                {filteredData.length === 0 ? null : (
-                  <div>
-                    <div className="p-2 font-semibold text-gold border-y-1 border-borderGold bg-bg-section font-title">
-                      {groupLabel}
-                    </div>
-                    {filteredData.map((option, idx) => (
-                      <div
-                        key={idx}
-                        onClick={() => toggleOption(option)} // Ajoute ou supprime l'option
-                        className="flex items-center gap-2 px-4 py-2 cursor-pointer hover:bg-borderGold/20"
-                      >
-                        <span className="text-white">{option}</span>
-                      </div>
-                    ))}
+                <div className="p-2 font-semibold text-gold border-y-1 border-borderGold bg-bg-section font-title">
+                  {groupLabel}
+                </div>
+                {filteredData.map((option, idx) => (
+                  <div
+                    key={idx}
+                    onClick={() => toggleOption(option)} // Ajoute ou supprime l'option
+                    className="flex items-center gap-2 px-4 py-2 cursor-pointer hover:bg-borderGold/20"
+                  >
+                    <span className="text-white">{option}</span>
                   </div>
-                )}
+                ))}
               </div>
             );
           })}
