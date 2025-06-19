@@ -13,8 +13,11 @@ import landTypes from "../data/TypesCards/landTypes.json";
 import planeswalkerTypes from "../data/TypesCards/planeswalkerTypes.json";
 import spellsTypes from "../data/TypesCards/spellsTypes.json";
 import supertypes from "../data/TypesCards/supertypes.json";
+import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
+import { useState } from "react";
 
 export default function SearchCard() {
+  const [showMore, setShowMore] = useState(false);
   const schema = yup.object().shape({
     name: yup.string().nullable(),
     extension: yup.array().of(yup.string()).nullable(), //codes comme war, ima, dmu ...
@@ -175,14 +178,14 @@ export default function SearchCard() {
 
   return (
     // 279
-    <div className="flex flex-col items-center justify-center flex-1 w-full max-lg:py-8">
+    <div className="flex flex-col items-center justify-center flex-1 w-full py-16 max-lg:py-8">
       {/* d filtre rechercher */}
       <form
         onSubmit={handleSubmit(submit)}
         className="w-4/5 flex flex-col max-lg:px-4 px-16 py-8 rounded-[5px] bg-bg-section border-1 border-borderGold justify-center items-center max-sm:px-2 max-sm:w-9/10 max-sm:items-start"
       >
         {/* Nom container */}
-        <div className="flex items-start justify-center px-2 py-8 w-9/10 max-sm:flex-col max-sm:gap-4 max-sm:w-full">
+        <div className="flex items-start justify-center px-2 py-8 w-9/10 max-sm:flex-col max-sm:gap-4 max-sm:w-full border-b-1 border-borderGold">
           {/* Nom */}
           <div className="flex justify-start w-50 max-sm:w-full">
             <label
@@ -210,7 +213,7 @@ export default function SearchCard() {
         </div>
 
         {/* Extension container */}
-        <div className="flex items-start justify-center px-2 py-8 w-9/10 max-sm:flex-col max-sm:gap-4 max-sm:w-full">
+        <div className="flex items-start justify-center px-2 py-8 w-9/10 max-sm:flex-col max-sm:gap-4 max-sm:w-full border-b-1 border-borderGold">
           <div className="flex justify-start w-50 max-sm:w-full">
             <label
               htmlFor="set"
@@ -243,7 +246,7 @@ export default function SearchCard() {
         </div>
 
         {/* Types container */}
-        <div className="flex items-start justify-center px-2 py-8 w-9/10 max-sm:flex-col max-sm:gap-4 max-sm:w-full">
+        <div className="flex items-start justify-center px-2 py-8 w-9/10 max-sm:flex-col max-sm:gap-4 max-sm:w-full border-b-1 border-borderGold">
           <div className="flex justify-start w-50 max-sm:w-full">
             <label
               htmlFor="type"
@@ -270,7 +273,36 @@ export default function SearchCard() {
             </p>
           </div>
         </div>
-        <Button txt="rechercher" />
+
+        {/* Plus d'option */}
+        <div className="flex justify-end px-2 py-8 w-9/10 max-sm:w-full border-b-1 border-borderGold ">
+          <button
+            className="flex items-center gap-2 hover:cursor-pointer text-gold hover:text-gold/70"
+            onClick={() => {
+              setShowMore(!showMore);
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              });
+            }}
+          >
+            {showMore ? (
+              <>
+                <p>Masquer les options</p>
+                <ChevronUpIcon className="w-4 h-4" />
+              </>
+            ) : (
+              <>
+                <p>Plus d'option</p>
+                <ChevronDownIcon className="w-4 h-4" />
+              </>
+            )}
+          </button>
+        </div>
+
+        <div className="flex items-center justify-center pt-8 w-50 max-sm:w-full">
+          <Button txt="Rechercher" />
+        </div>
       </form>
     </div>
   );
