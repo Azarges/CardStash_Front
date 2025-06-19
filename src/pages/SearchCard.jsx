@@ -3,18 +3,12 @@ import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
 import Button from "../components/shared/button";
 import sets from "../data/sets.json";
+import symbols from "../data/symbology.json";
 import CustomMultiSelect from "../components/SearchCard.jsx/CustomMultiSelect";
 import CustomTypeSelect from "../components/SearchCard.jsx/CustomTypeSelect";
-import artefactTypes from "../data/TypesCards/artefactTypes.json";
-import cardTypes from "../data/TypesCards/cardTypes.json";
-import creatureTypes from "../data/TypesCards/creaturesTypes.json";
-import enchantmentType from "../data/TypesCards/enchantmentTypes.json";
-import landTypes from "../data/TypesCards/landTypes.json";
-import planeswalkerTypes from "../data/TypesCards/planeswalkerTypes.json";
-import spellsTypes from "../data/TypesCards/spellsTypes.json";
-import supertypes from "../data/TypesCards/supertypes.json";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
+import CustomInputSymbology from "../components/SearchCard.jsx/CustomInputSymbology";
 
 export default function SearchCard() {
   const [showMore, setShowMore] = useState(false);
@@ -165,16 +159,12 @@ export default function SearchCard() {
     icon: set.icon_svg_uri,
     code: set.code,
   }));
-  const typesData = [
-    { name: "Types", data: cardTypes.data },
-    { name: "Supertypes", data: supertypes.data },
-    { name: "Artifact Types", data: artefactTypes.data },
-    { name: "Enchantment Types", data: enchantmentType.data },
-    { name: "Land Types", data: landTypes.data },
-    { name: "Spell Types", data: spellsTypes.data },
-    { name: "Planeswalker Types", data: planeswalkerTypes.data },
-    { name: "Creature Types", data: creatureTypes.data },
-  ];
+
+  const symbolOptions = symbols.data.map((symbol) => ({
+    symbol: symbol.symbol,
+    icon: symbol.svg_uri,
+    desc: symbol.english,
+  }));
 
   return (
     // 279
@@ -261,7 +251,6 @@ export default function SearchCard() {
               control={control}
               render={({ field }) => (
                 <CustomTypeSelect
-                  datasets={typesData}
                   value={field.value || []}
                   onChange={field.onChange}
                   placeholder="Sélectionnez un ou plusieurs types"
@@ -273,6 +262,37 @@ export default function SearchCard() {
             </p>
           </div>
         </div>
+
+        {/* Text container */}
+        {showMore && (
+          <div className="flex items-start justify-center px-2 py-8 w-9/10 max-sm:flex-col max-sm:gap-4 max-sm:w-full border-b-1 border-borderGold">
+            <div className="flex justify-start w-50 max-sm:w-full">
+              <label
+                htmlFor="text"
+                className="leading-[19px] max-sm:leading-[17px] max-sm:text-[14px] text-gold"
+              >
+                Texte
+              </label>
+            </div>
+            <div className="flex flex-col items-start justify-start gap-2.5 w-100 max-sm:w-full">
+              <Controller
+                name="text"
+                control={control}
+                render={({ field }) => (
+                  <CustomInputSymbology
+                    options={symbolOptions}
+                    value={field.value}
+                    onChange={field.onChange}
+                  />
+                )}
+              />
+              <p className="text-placeholder text-[13px] leading-[16px]">
+                Rechercher n'importe quel mot et/ou symbole qui apparait dans le
+                texte de la carte.
+              </p>
+            </div>
+          </div>
+        )}
 
         {/* Plus d'option */}
         <div className="flex justify-end px-2 py-8 w-9/10 max-sm:w-full border-b-1 border-borderGold ">
@@ -301,6 +321,7 @@ export default function SearchCard() {
           </button>
         </div>
 
+        {/* Bouton */}
         <div className="flex items-center justify-center pt-8 w-50 max-sm:w-full">
           <Button txt="Rechercher" />
         </div>

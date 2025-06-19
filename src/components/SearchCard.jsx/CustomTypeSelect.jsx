@@ -1,13 +1,30 @@
 import { useState, useEffect, useRef } from "react";
 import { FaXmark } from "react-icons/fa6";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import artefactTypes from "../../data/TypesCards/artefactTypes.json";
+import cardTypes from "../../data/TypesCards/cardTypes.json";
+import creatureTypes from "../../data/TypesCards/creaturesTypes.json";
+import enchantmentType from "../../data/TypesCards/enchantmentTypes.json";
+import landTypes from "../../data/TypesCards/landTypes.json";
+import planeswalkerTypes from "../../data/TypesCards/planeswalkerTypes.json";
+import spellsTypes from "../../data/TypesCards/spellsTypes.json";
+import supertypes from "../../data/TypesCards/supertypes.json";
 
 export default function CustomTypeSelect({
-  datasets,
   value,
   onChange,
   placeholder = "Choisir...",
 }) {
+  const datasets = [
+    { name: "Types", data: cardTypes.data },
+    { name: "Supertypes", data: supertypes.data },
+    { name: "Artifact Types", data: artefactTypes.data },
+    { name: "Enchantment Types", data: enchantmentType.data },
+    { name: "Land Types", data: landTypes.data },
+    { name: "Spell Types", data: spellsTypes.data },
+    { name: "Planeswalker Types", data: planeswalkerTypes.data },
+    { name: "Creature Types", data: creatureTypes.data },
+  ];
   const [openGroup, setOpenGroup] = useState(null);
   const [search, setSearch] = useState("");
   const ref = useRef(null);
@@ -115,13 +132,12 @@ export default function CustomTypeSelect({
 
           {/* Affichage des groupes d'options */}
           {datasets.map((dataset, index) => {
-            const groupLabel = dataset.name || `Groupe ${index + 1}`;
+            const groupLabel = `Groupe ${index + 1}`;
             const filteredData = filteredOptions(dataset.data); // Filtre les options déjà sélectionnées
-
             return (
-              <>
+              <div key={groupLabel}>
                 {filteredData.length === 0 ? null : (
-                  <div key={groupLabel}>
+                  <div>
                     <div className="p-2 font-semibold text-gold border-y-1 border-borderGold bg-bg-section font-title">
                       {groupLabel}
                     </div>
@@ -136,7 +152,7 @@ export default function CustomTypeSelect({
                     ))}
                   </div>
                 )}
-              </>
+              </div>
             );
           })}
         </div>

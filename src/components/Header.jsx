@@ -259,7 +259,7 @@ export default function Header() {
               <NavLink to="#" onClick={() => setIsOpen(false)}>
                 <Button txt="Inventaire" />
               </NavLink>
-              <NavLink to="#" onClick={() => setIsOpen(false)}>
+              <NavLink to="/search" onClick={() => setIsOpen(false)}>
                 <Button txt="Recherche carte" />
               </NavLink>
               <NavLink to="#" onClick={() => setIsOpen(false)}>
