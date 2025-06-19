@@ -175,16 +175,16 @@ export default function SearchCard() {
 
   return (
     // 279
-    <div className="flex flex-col items-center justify-center flex-1 w-full">
+    <div className="flex flex-col items-center justify-center flex-1 w-full max-lg:py-8">
       {/* d filtre rechercher */}
       <form
         onSubmit={handleSubmit(submit)}
-        className="w-[1400px] flex flex-col px-16 py-8 rounded-[5px] bg-bg-section border-1 border-borderGold justify-center items-center"
+        className="w-4/5 flex flex-col max-lg:px-4 px-16 py-8 rounded-[5px] bg-bg-section border-1 border-borderGold justify-center items-center max-sm:px-2 max-sm:w-9/10 max-sm:items-start"
       >
-        {/* 293 */}
-        <div className="flex items-start justify-center px-2 py-8 w-9/10">
-          {/* 292 */}
-          <div className="flex justify-start w-50">
+        {/* Nom container */}
+        <div className="flex items-start justify-center px-2 py-8 w-9/10 max-sm:flex-col max-sm:gap-4 max-sm:w-full">
+          {/* Nom */}
+          <div className="flex justify-start w-50 max-sm:w-full">
             <label
               htmlFor="name"
               className="leading-[19px] max-sm:leading-[17px] max-sm:text-[14px] text-gold"
@@ -193,13 +193,13 @@ export default function SearchCard() {
             </label>
           </div>
           {/* nom */}
-          <div className="flex flex-col items-start justify-start gap-2.5 w-100">
+          <div className="flex flex-col items-start justify-start gap-2.5 w-100 max-sm:w-full">
             {/* input */}
             <input
               {...register("name")}
               type="text"
               id="name"
-              className="w-100 h-[35px] p-2.5 text-white rounded-[5px] bg-bg-input border-1 border-borderGold"
+              className="w-100 max-lg:w-75 max-sm:w-full h-[35px] p-2.5 text-white rounded-[5px] bg-bg-input border-1 border-borderGold"
               placeholder='Exemple: "Jace"'
             />
             {/* texte */}
@@ -209,9 +209,9 @@ export default function SearchCard() {
           </div>
         </div>
 
-        {/* 298 */}
-        <div className="flex items-start justify-center px-2 py-8 w-9/10">
-          <div className="flex justify-start w-50">
+        {/* Extension container */}
+        <div className="flex items-start justify-center px-2 py-8 w-9/10 max-sm:flex-col max-sm:gap-4 max-sm:w-full">
+          <div className="flex justify-start w-50 max-sm:w-full">
             <label
               htmlFor="set"
               className="leading-[19px] max-sm:leading-[17px] max-sm:text-[14px] text-gold"
@@ -219,7 +219,7 @@ export default function SearchCard() {
               Extension
             </label>
           </div>
-          <div className="flex flex-col items-start justify-start gap-2.5  w-100">
+          <div className="flex flex-col items-start justify-start gap-2.5  w-100 max-sm:w-full">
             <Controller
               name="extension"
               control={control}
@@ -242,9 +242,9 @@ export default function SearchCard() {
           </div>
         </div>
 
-        {/* Sélection des types */}
-        <div className="flex items-start justify-center px-2 py-8 w-9/10">
-          <div className="flex justify-start w-50">
+        {/* Types container */}
+        <div className="flex items-start justify-center px-2 py-8 w-9/10 max-sm:flex-col max-sm:gap-4 max-sm:w-full">
+          <div className="flex justify-start w-50 max-sm:w-full">
             <label
               htmlFor="type"
               className="leading-[19px] max-sm:leading-[17px] max-sm:text-[14px] text-gold"
@@ -252,7 +252,7 @@ export default function SearchCard() {
               Types de carte
             </label>
           </div>
-          <div className="flex flex-col items-start justify-start gap-2.5 w-100">
+          <div className="flex flex-col items-start justify-start gap-2.5 w-100 max-sm:w-full">
             <Controller
               name="type"
               control={control}

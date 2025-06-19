@@ -49,7 +49,7 @@ export default function CustomTypeSelect({
       .filter((opt) => !value.includes(opt)); // Exclut les options déjà sélectionnées
 
   return (
-    <div className="relative w-100" ref={ref}>
+    <div className="relative w-100 max-lg:w-75 max-sm:w-full" ref={ref}>
       {/* Select Box */}
       <div
         className="w-full min-h-[35px] p-2.5 rounded-[5px] text-white bg-bg-input border-1 border-borderGold cursor-pointer flex items-center justify-between gap-2"
