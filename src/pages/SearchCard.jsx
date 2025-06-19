@@ -7,6 +7,13 @@ import CustomMultiSelect from "../components/SearchCard.jsx/CustomMultiSelect";
 import CustomTypeSelect from "../components/SearchCard.jsx/CustomTypeSelect";
 import artefactTypes from "../data/TypesCards/artefactTypes.json";
 import cardTypes from "../data/TypesCards/cardTypes.json";
+import creatureTypes from "../data/TypesCards/creaturesTypes.json";
+import enchantmentType from "../data/TypesCards/enchantmentTypes.json";
+import landTypes from "../data/TypesCards/landTypes.json";
+import planeswalkerTypes from "../data/TypesCards/planeswalkerTypes.json";
+import spellsTypes from "../data/TypesCards/spellsTypes.json";
+import supertypes from "../data/TypesCards/supertypes.json";
+
 export default function SearchCard() {
   const schema = yup.object().shape({
     name: yup.string().nullable(),
@@ -156,58 +163,65 @@ export default function SearchCard() {
     code: set.code,
   }));
   const typesData = [
-    { name: "Artefact Types", data: artefactTypes.data },
-    { name: "Card Types", data: cardTypes.data },
+    { name: "Types", data: cardTypes.data },
+    { name: "Supertypes", data: supertypes.data },
+    { name: "Artifact Types", data: artefactTypes.data },
+    { name: "Enchantment Types", data: enchantmentType.data },
+    { name: "Land Types", data: landTypes.data },
+    { name: "Spell Types", data: spellsTypes.data },
+    { name: "Planeswalker Types", data: planeswalkerTypes.data },
+    { name: "Creature Types", data: creatureTypes.data },
   ];
 
   return (
     // 279
-    <div className='flex flex-col items-center justify-center flex-1 w-full'>
+    <div className="flex flex-col items-center justify-center flex-1 w-full">
       {/* d filtre rechercher */}
       <form
         onSubmit={handleSubmit(submit)}
-        className='w-[1400px] flex flex-col px-16 py-8 rounded-[5px] bg-bg-section border-1 border-borderGold justify-center items-center'
+        className="w-[1400px] flex flex-col px-16 py-8 rounded-[5px] bg-bg-section border-1 border-borderGold justify-center items-center"
       >
         {/* 293 */}
-        <div className='flex items-start justify-center px-2 py-8 w-9/10'>
+        <div className="flex items-start justify-center px-2 py-8 w-9/10">
           {/* 292 */}
-          <div className='flex justify-start w-50'>
+          <div className="flex justify-start w-50">
             <label
-              htmlFor='name'
-              className='leading-[19px] max-sm:leading-[17px] max-sm:text-[14px] text-gold'
+              htmlFor="name"
+              className="leading-[19px] max-sm:leading-[17px] max-sm:text-[14px] text-gold"
             >
               Nom de la carte
             </label>
           </div>
           {/* nom */}
-          <div className='flex flex-col items-start justify-start gap-2.5 w-100'>
+          <div className="flex flex-col items-start justify-start gap-2.5 w-100">
             {/* input */}
             <input
               {...register("name")}
-              type='text'
-              id='name'
-              className='w-75 h-[35px] p-2.5 text-white rounded-[5px] bg-bg-input border-1 border-borderGold'
+              type="text"
+              id="name"
+              className="w-100 h-[35px] p-2.5 text-white rounded-[5px] bg-bg-input border-1 border-borderGold"
+              placeholder='Exemple: "Jace"'
             />
             {/* texte */}
-            <p className='text-placeholder text-[13px] leading-[16px] '>
+            <p className="text-placeholder text-[13px] leading-[16px] ">
               Rechercher les cartes dont le nom contient le mot donné
             </p>
           </div>
         </div>
 
         {/* 298 */}
-        <div className='flex items-start justify-center px-2 py-8 w-9/10'>
-          <div className='flex justify-start w-50'>
+        <div className="flex items-start justify-center px-2 py-8 w-9/10">
+          <div className="flex justify-start w-50">
             <label
-              htmlFor='set'
-              className='leading-[19px] max-sm:leading-[17px] max-sm:text-[14px] text-gold'
+              htmlFor="set"
+              className="leading-[19px] max-sm:leading-[17px] max-sm:text-[14px] text-gold"
             >
               Extension
             </label>
           </div>
-          <div className='flex flex-col items-start justify-start gap-2.5  w-100'>
+          <div className="flex flex-col items-start justify-start gap-2.5  w-100">
             <Controller
-              name='extension'
+              name="extension"
               control={control}
               render={({ field }) => (
                 <CustomMultiSelect
@@ -218,45 +232,45 @@ export default function SearchCard() {
                   onChange={(selected) =>
                     field.onChange(selected.map((option) => option.value))
                   }
-                  placeholder='Sélectionnez des extensions'
+                  placeholder="Sélectionnez des extensions"
                 />
               )}
             />
-            <p className='text-placeholder text-[13px] leading-[16px]'>
+            <p className="text-placeholder text-[13px] leading-[16px]">
               Sélectionnez une ou plusieurs extensions.
             </p>
           </div>
         </div>
 
         {/* Sélection des types */}
-        <div className='flex items-start justify-center px-2 py-8 w-9/10'>
-          <div className='flex justify-start w-50'>
+        <div className="flex items-start justify-center px-2 py-8 w-9/10">
+          <div className="flex justify-start w-50">
             <label
-              htmlFor='type'
-              className='leading-[19px] max-sm:leading-[17px] max-sm:text-[14px] text-gold'
+              htmlFor="type"
+              className="leading-[19px] max-sm:leading-[17px] max-sm:text-[14px] text-gold"
             >
               Types de carte
             </label>
           </div>
-          <div className='flex flex-col items-start justify-start gap-2.5 w-100'>
+          <div className="flex flex-col items-start justify-start gap-2.5 w-100">
             <Controller
-              name='type'
+              name="type"
               control={control}
               render={({ field }) => (
                 <CustomTypeSelect
                   datasets={typesData}
                   value={field.value || []}
                   onChange={field.onChange}
-                  placeholder='Sélectionnez un ou plusieurs types'
+                  placeholder="Sélectionnez un ou plusieurs types"
                 />
               )}
             />
-            <p className='text-placeholder text-[13px] leading-[16px]'>
+            <p className="text-placeholder text-[13px] leading-[16px]">
               Sélectionnez un ou plusieurs types de cartes.
             </p>
           </div>
         </div>
-        <Button txt='rechercher' />
+        <Button txt="rechercher" />
       </form>
     </div>
   );
