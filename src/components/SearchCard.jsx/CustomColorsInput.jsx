@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import CheckBox from "../shared/CheckBox";
 
-export default function CustomColorsInput({ value = [], onChange }) {
+export default function CustomColorsInput({
+  value = [],
+  onChange,
+  placeholder,
+}) {
   const colors = [
     { title: "White", color: "#fefefe", label: "W" },
     { title: "Blue", color: "#0000ff", label: "U" },
@@ -45,7 +49,7 @@ export default function CustomColorsInput({ value = [], onChange }) {
         ))}
       </div>
       <p className="text-placeholder text-[13px] leading-[16px]">
-        Sélectionnez une ou plusieurs couleurs.
+        {placeholder}
       </p>
     </div>
   );

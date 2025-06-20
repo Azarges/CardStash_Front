@@ -5,7 +5,7 @@ import { resetPassword } from "../../../apis/auth.api";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import logo from "../../../assets/logo.png";
-import Button from "../../../components/shared/button";
+import Button from "../../../components/shared/Button";
 
 export default function ResetPassword() {
   const { token } = useParams();

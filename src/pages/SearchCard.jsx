@@ -22,15 +22,10 @@ export default function SearchCard() {
       .array()
       .of(yup.string().oneOf(["W", "U", "B", "R", "G", "C"]))
       .nullable(),
-
     colorsMatch: yup.string().oneOf(["=", ">=", "<="]).default("="), //>= including, <= atMost, = exactly
-    commanderColors: yup
+    commanderColors: yup // ['W', 'B']
       .array()
-      .of(
-        yup
-          .string()
-          .oneOf(["White", "Blue", "Black", "Red", "Green", "Colorless"])
-      )
+      .of(yup.string().oneOf(["W", "U", "B", "R", "G", "C"]))
       .nullable(),
     stats: yup.object({
       cmc: yup
@@ -295,7 +290,7 @@ export default function SearchCard() {
             <div className="flex justify-center w-full max-sm:flex-col max-sm:gap-4">
               <div className="flex justify-start w-50 max-sm:w-full">
                 <label
-                  htmlFor="text"
+                  htmlFor="colors"
                   className="leading-[19px] max-sm:leading-[17px] max-sm:text-[14px] text-gold"
                 >
                   Couleurs
@@ -309,6 +304,7 @@ export default function SearchCard() {
                     <CustomColorsInput
                       value={field.value || []}
                       onChange={field.onChange}
+                      placeholder="Sélectionnez une ou plusieurs couleurs."
                     />
                   )}
                 />
@@ -336,6 +332,35 @@ export default function SearchCard() {
                       <option value={">="}>Inclure</option>
                       <option value={"<="}>Au minimum</option>
                     </select>
+                  )}
+                />
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Commander container */}
+        {showMore && (
+          <div className="flex flex-col items-center gap-4 px-2 py-8 w-9/10 border-b-1 border-borderGold max-sm:w-full">
+            <div className="flex justify-center w-full max-sm:flex-col max-sm:gap-4">
+              <div className="flex justify-start w-50 max-sm:w-full">
+                <label
+                  htmlFor="commanderColors"
+                  className="leading-[19px] max-sm:leading-[17px] max-sm:text-[14px] text-gold"
+                >
+                  Identité commandant
+                </label>
+              </div>
+              <div className="flex flex-col items-start justify-start gap-2.5 w-100 max-sm:w-full">
+                <Controller
+                  name="commanderColors"
+                  control={control}
+                  render={({ field }) => (
+                    <CustomColorsInput
+                      value={field.value || []}
+                      onChange={field.onChange}
+                      placeholder="Rechercher seulement les cartes qui partagent l'identité du commandant"
+                    />
                   )}
                 />
               </div>

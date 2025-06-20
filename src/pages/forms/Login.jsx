@@ -9,8 +9,8 @@ import { signin } from "../../apis/auth.api";
 import { useEffect } from "react";
 import { useRef } from "react";
 import logo from "../../assets/logo.png";
-import Button from "../../components/shared/button";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Button from "../../components/shared/button";
 
 export default function Login() {
   const { login } = useContext(AuthContext);
