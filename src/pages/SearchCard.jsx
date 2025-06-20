@@ -10,6 +10,7 @@ import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import CustomInputSymbology from "../components/SearchCard.jsx/CustomInputSymbology";
 import CustomColorsInput from "../components/SearchCard.jsx/CustomColorsInput";
+import CustomRarityInput from "../components/SearchCard.jsx/CustomRarityInput";
 
 export default function SearchCard() {
   const [showMore, setShowMore] = useState(false);
@@ -55,7 +56,7 @@ export default function SearchCard() {
     }),
     rarity: yup
       .array()
-      .of(yup.string().oneOf(["commun", "uncommon", "rare", "mythic"]))
+      .of(yup.string().oneOf(["c", "u", "r", "m"]))
       .nullable(),
     legality: yup
       .object({
@@ -324,14 +325,22 @@ export default function SearchCard() {
                   name="colorsMatch"
                   control={control}
                   render={({ field }) => (
-                    <select
-                      {...field}
-                      className="w-50 h-[-35px] p-2 rounded-[5px] bg-bg-input text-white border-1 border-borderGold"
-                    >
-                      <option value={"="}>Exactement</option>
-                      <option value={">="}>Inclure</option>
-                      <option value={"<="}>Au minimum</option>
-                    </select>
+                    <div className="relative flex items-center justify-end w-50">
+                      <select
+                        {...field}
+                        className="w-full h-[-35px] p-2 rounded-[5px] bg-bg-input text-white border-1 border-borderGold appearance-none focus:bg-bg-input"
+                      >
+                        <option
+                          className="bg-bg-input hover:bg-borderGold/20"
+                          value={"="}
+                        >
+                          Exactement
+                        </option>
+                        <option value={">="}>Inclure</option>
+                        <option value={"<="}>Au minimum</option>
+                      </select>
+                      <ChevronDownIcon className="absolute w-4 h-4 mr-2 pointer-events-none text-gold" />
+                    </div>
                   )}
                 />
               </div>
@@ -360,6 +369,35 @@ export default function SearchCard() {
                       value={field.value || []}
                       onChange={field.onChange}
                       placeholder="Rechercher seulement les cartes qui partagent l'identité du commandant"
+                    />
+                  )}
+                />
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Rareté container */}
+        {showMore && (
+          <div className="flex flex-col items-center gap-4 px-2 py-8 w-9/10 border-b-1 border-borderGold max-sm:w-full">
+            <div className="flex justify-center w-full max-sm:flex-col max-sm:gap-4">
+              <div className="flex justify-start w-50 max-sm:w-full">
+                <label
+                  htmlFor="rarity"
+                  className="leading-[19px] max-sm:leading-[17px] max-sm:text-[14px] text-gold"
+                >
+                  Rareté carte
+                </label>
+              </div>
+              <div className="flex flex-col items-start justify-start gap-2.5 w-100 max-sm:w-full">
+                <Controller
+                  name="rarity"
+                  control={control}
+                  render={({ field }) => (
+                    <CustomRarityInput
+                      value={field.value || []}
+                      onChange={field.onChange}
+                      placeholder="Rechercher des cartes d'une ou plusieurs rareté."
                     />
                   )}
                 />
