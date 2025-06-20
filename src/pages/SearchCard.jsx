@@ -377,6 +377,8 @@ export default function SearchCard() {
           </div>
         )}
 
+        {/* Statistique container */}
+
         {/* Rareté container */}
         {showMore && (
           <div className="flex flex-col items-center gap-4 px-2 py-8 w-9/10 border-b-1 border-borderGold max-sm:w-full">
@@ -406,6 +408,8 @@ export default function SearchCard() {
           </div>
         )}
 
+        {/* Format container */}
+
         {/* Plus d'option */}
         <div className="flex justify-end px-2 py-8 w-9/10 max-sm:w-full border-b-1 border-borderGold ">
           <button
@@ -433,10 +437,12 @@ export default function SearchCard() {
           </button>
         </div>
 
+        {/* Trier par */}
+
         {/* Bouton */}
-        <div className="flex items-center justify-center gap-16 pt-8 w-100 max-sm:w-full max-sm:flex-col max-sm:gap-4 max-sm:px-8">
-          <Button txt="Rechercher" />
+        <div className="flex items-center justify-center gap-16 pt-8 w-100 max-sm:w-full max-sm:flex-col-reverse max-sm:gap-4 max-sm:px-8">
           <Button txt="Reset" variant="important" onClick={() => reset()} />
+          <Button txt="Rechercher" />
         </div>
         <pre className="text-white">{JSON.stringify(errors, null, 2)}</pre>
       </form>
