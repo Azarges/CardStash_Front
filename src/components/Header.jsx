@@ -7,7 +7,7 @@ import { FaUser } from "react-icons/fa";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import logo from "../assets/logo.png";
 import defaultAvatar from "../assets/defaultAvatar.jpg";
-import Button from "./shared/button";
+import Button from "./shared/Button";
 export default function Header() {
   const { user, logout } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false); // État pour ouvrir le panneau

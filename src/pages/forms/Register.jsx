@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import logo from "../../assets/logo.png";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-import Button from "../../components/shared/button";
+import Button from "../../components/shared/Button";
 
 export default function Register() {
   const navigate = useNavigate();

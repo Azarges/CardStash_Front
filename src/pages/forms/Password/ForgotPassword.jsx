@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { forgotPassword } from "../../../apis/auth.api";
 import toast from "react-hot-toast";
 import logo from "../../../assets/logo.png";
-import Button from "../../../components/shared/button";
+import Button from "../../../components/shared/Button";
 import { NavLink } from "react-router-dom";
 
 export default function ForgotPassword() {
