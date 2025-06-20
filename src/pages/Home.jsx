@@ -40,7 +40,7 @@ export default function Home() {
                 <img
                   src={CardInventory}
                   alt="InventoryCard"
-                  className="absolute top-0 left-0 rounded-[40px] border-borderGold border-1 object-cover z-0 transition duration-300 group-hover:brightness-50"
+                  className="absolute top-0 left-0 rounded-[40px] border-borderGold border-1 object-cover z-0 transition duration-300 group-hover:brightness-50 max-sm:brightness-50"
                 />
                 <p className="relative z-10 text-[28px] font-title text-gold leading-[37px]">
                   Inventaire
@@ -63,7 +63,7 @@ export default function Home() {
                 <img
                   src={CardTrade}
                   alt="TradeCard"
-                  className="absolute top-0 left-0 rounded-[40px] border-borderGold border-1 object-cover z-0 transition duration-300 group-hover:brightness-50"
+                  className="absolute top-0 left-0 rounded-[40px] border-borderGold border-1 object-cover z-0 transition duration-300 group-hover:brightness-50 max-sm:brightness-50"
                 />
                 <p className="relative z-10 text-[28px] font-title text-gold leading-[37px]">
                   Échanges
@@ -87,7 +87,7 @@ export default function Home() {
                 <img
                   src={CardDecks}
                   alt="DecksCard"
-                  className="absolute top-0 left-0 rounded-[40px] border-borderGold border-1 object-cover z-0 transition duration-300 group-hover:brightness-50"
+                  className="absolute top-0 left-0 rounded-[40px] border-borderGold border-1 object-cover z-0 transition duration-300 group-hover:brightness-50 max-sm:brightness-50"
                 />
                 <p className="relative z-10 text-[28px] font-title text-gold leading-[37px]">
                   Decks
