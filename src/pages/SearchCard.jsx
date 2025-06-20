@@ -1,7 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
-import Button from "../components/shared/button";
+import Button from "../components/shared/Button";
 import sets from "../data/sets.json";
 import symbols from "../data/symbology.json";
 import CustomMultiSelect from "../components/SearchCard.jsx/CustomMultiSelect";

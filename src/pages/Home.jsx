@@ -1,4 +1,4 @@
-import Button from "../components/shared/button";
+import Button from "../components/shared/Button";
 import CardDecks from "../assets/CardDecks.png";
 import CardInventory from "../assets/CardInventory.png";
 import CardTrade from "../assets/CardTrade.png";
