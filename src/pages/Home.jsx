@@ -36,7 +36,7 @@ export default function Home() {
           {/* Card 1 Inventory */}
           <div className="flex flex-col  gap-2.5 p-2 bg-bg-section border-3 border-borderGold shadow-md rounded-[13px] max-sm:w-52 max-sm:h-65 max-xl:w-3xs max-xl:h-81 w-76 h-96 shrink-0">
             <NavLink to="/" className="w-full h-full">
-              <div className="relative rounded-[7px] border-borderGold border-1 p-6 flex flex-col justify-start gap-16 items-center group w-full h-full">
+              <div className="relative rounded-[7px] border-borderGold border-1 p-6 flex flex-col justify-start gap-16 items-center group w-full h-full max-sm:gap-4">
                 <img
                   src={CardInventory}
                   alt="InventoryCard"
@@ -45,7 +45,11 @@ export default function Home() {
                 <p className="relative z-10 text-[28px] font-title text-gold leading-[37px]">
                   Inventaire
                 </p>
-                <p className="relative z-10 text-white leading-[19px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-500">
+                <p
+                  className="relative z-10 text-white leading-[19px] transition-opacity duration-500 
+                  sm:opacity-0 sm:invisible sm:group-hover:opacity-100 sm:group-hover:visible 
+                  max-sm:block"
+                >
                   Gérez facilement votre collection de cartes : visualisez,
                   organisez et accédez rapidement à toutes vos cartes.
                 </p>
@@ -55,7 +59,7 @@ export default function Home() {
           {/* Card 2 Trade */}
           <div className="flex flex-col  gap-2.5 p-2 bg-bg-section border-3 border-borderGold shadow-md rounded-[13px] max-sm:w-52 max-sm:h-65 max-xl:w-3xs max-xl:h-81 w-76 h-96 shrink-0">
             <NavLink to="/" className="w-full h-full">
-              <div className="relative rounded-[7px] border-borderGold border-1 p-6 flex flex-col justify-start gap-16 items-center group w-full h-full">
+              <div className="relative rounded-[7px] border-borderGold border-1 p-6 flex flex-col justify-start gap-16 items-center group w-full h-full max-sm:gap-4">
                 <img
                   src={CardTrade}
                   alt="TradeCard"
@@ -64,7 +68,12 @@ export default function Home() {
                 <p className="relative z-10 text-[28px] font-title text-gold leading-[37px]">
                   Échanges
                 </p>
-                <p className="relative z-10 text-white leading-[19px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-500">
+
+                <p
+                  className="relative z-10 text-white leading-[19px] transition-opacity duration-500 
+                  sm:opacity-0 sm:invisible sm:group-hover:opacity-100 sm:group-hover:visible 
+                  max-sm:block"
+                >
                   Échangez ou prêtez vos cartes rapidement avec d’autres
                   utilisateurs.
                 </p>
@@ -74,7 +83,7 @@ export default function Home() {
           {/* Card 3 decks */}
           <div className="flex flex-col gap-2.5 p-2 bg-bg-section border-3 border-borderGold shadow-md rounded-[13px] max-sm:w-52 max-sm:h-65 max-xl:w-3xs max-xl:h-81 w-76 h-96 shrink-0 ">
             <NavLink to="/" className="w-full h-full">
-              <div className="relative rounded-[7px] border-borderGold border-1 p-6 flex flex-col justify-start gap-16 items-center group w-full h-full">
+              <div className="relative rounded-[7px] border-borderGold border-1 p-6 flex flex-col justify-start gap-16 items-center group w-full h-full max-sm:gap-4">
                 <img
                   src={CardDecks}
                   alt="DecksCard"
@@ -83,7 +92,11 @@ export default function Home() {
                 <p className="relative z-10 text-[28px] font-title text-gold leading-[37px]">
                   Decks
                 </p>
-                <p className="relative z-10 text-white leading-[19px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-500">
+                <p
+                  className="relative z-10 text-white leading-[19px] transition-opacity duration-500 
+                  sm:opacity-0 sm:invisible sm:group-hover:opacity-100 sm:group-hover:visible 
+                  max-sm:block"
+                >
                   Créez et personnalisez vos decks en quelques clics. Planifiez
                   vos stratégies et testez vos compositions avant chaque duel.
                 </p>
