@@ -292,7 +292,21 @@ export default function SearchCard() {
           </div>
         )}
 
-        {showMore && <CustomColorsInput />}
+        {showMore && (
+          <div className="flex items-start justify-center px-2 py-8 w-9/10 max-sm:flex-col max-sm:gap-4 max-sm:w-full border-b-1 border-borderGold">
+            <div className="flex justify-start w-50 max-sm:w-full">
+              <label
+                htmlFor="text"
+                className="leading-[19px] max-sm:leading-[17px] max-sm:text-[14px] text-gold"
+              >
+                Texte
+              </label>
+            </div>
+            <div className="flex flex-col items-start justify-start gap-2.5 w-100 max-sm:w-full">
+              <CustomColorsInput />
+            </div>
+          </div>
+        )}
 
         {/* Plus d'option */}
         <div className="flex justify-end px-2 py-8 w-9/10 max-sm:w-full border-b-1 border-borderGold ">

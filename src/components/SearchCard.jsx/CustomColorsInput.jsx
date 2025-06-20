@@ -37,8 +37,8 @@ export default function CustomColorsInput() {
   };
 
   return (
-    <div className="flex flex-col w-[600px] gap-2.5">
-      <div className="w-100 h-[128px] grid grid-cols-2 grid-rows-3 gap-2">
+    <div className="flex flex-col w-100 max-lg:w-75 max-sm:w-full gap-2.5">
+      <div className="w-100 h-[128px] grid grid-cols-2 grid-rows-3 gap-2 max-sm:w-full max-md:w-75">
         {colors.map(({ title, color }) => (
           <CheckBox
             key={title}
