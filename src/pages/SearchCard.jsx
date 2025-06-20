@@ -14,19 +14,16 @@ import CustomColorsInput from "../components/SearchCard.jsx/CustomColorsInput";
 export default function SearchCard() {
   const [showMore, setShowMore] = useState(false);
   const schema = yup.object().shape({
-    name: yup.string().nullable(),
-    extension: yup.array().of(yup.string()).nullable(), //codes comme war, ima, dmu ...
-    type: yup.array().of(yup.string()).nullable(),
-    text: yup.string().nullable(),
-    colors: yup
+    name: yup.string().nullable(), //nom de la carte
+    extension: yup.array().of(yup.string()).nullable(), // ['war'], ['ima'], ['dmu'] ...
+    type: yup.array().of(yup.string()).nullable(), // [Artifact]
+    text: yup.string().nullable(), // "{T}" pour tap
+    colors: yup // ['W', 'B']
       .array()
-      .of(
-        yup
-          .string()
-          .oneOf(["White", "Blue", "Black", "Red", "Green", "Colorless"])
-      )
+      .of(yup.string().oneOf(["W", "U", "B", "R", "G", "C"]))
       .nullable(),
-    colorsMatch: yup.string().oneOf(["=", ">=", "<="]).default("="),
+
+    colorsMatch: yup.string().oneOf(["=", ">=", "<="]).default("="), //>= including, <= atMost, = exactly
     commanderColors: yup
       .array()
       .of(
@@ -106,7 +103,7 @@ export default function SearchCard() {
     type: null,
     text: null,
     colors: null,
-    colorsMatch: "include",
+    colorsMatch: "=",
     commanderColors: null,
     stats: {
       cmc: {
@@ -243,7 +240,7 @@ export default function SearchCard() {
               Types de carte
             </label>
           </div>
-          <div className="flex flex-col items-start justify-start gap-2.5 w-100 max-sm:w-full">
+          <div className="flex flex-col items-start justify-start gap-2.5 w-100 max-sm:w-full ">
             <Controller
               name="type"
               control={control}
@@ -292,18 +289,56 @@ export default function SearchCard() {
           </div>
         )}
 
+        {/* Colors container */}
         {showMore && (
-          <div className="flex items-start justify-center px-2 py-8 w-9/10 max-sm:flex-col max-sm:gap-4 max-sm:w-full border-b-1 border-borderGold">
-            <div className="flex justify-start w-50 max-sm:w-full">
-              <label
-                htmlFor="text"
-                className="leading-[19px] max-sm:leading-[17px] max-sm:text-[14px] text-gold"
-              >
-                Texte
-              </label>
+          <div className="flex flex-col items-center gap-4 px-2 py-8 w-9/10 border-b-1 border-borderGold max-sm:w-full">
+            <div className="flex justify-center w-full max-sm:flex-col max-sm:gap-4">
+              <div className="flex justify-start w-50 max-sm:w-full">
+                <label
+                  htmlFor="text"
+                  className="leading-[19px] max-sm:leading-[17px] max-sm:text-[14px] text-gold"
+                >
+                  Couleurs
+                </label>
+              </div>
+              <div className="flex flex-col items-start justify-start gap-2.5 w-100 max-sm:w-full">
+                <Controller
+                  name="colors"
+                  control={control}
+                  render={({ field }) => (
+                    <CustomColorsInput
+                      value={field.value || []}
+                      onChange={field.onChange}
+                    />
+                  )}
+                />
+              </div>
             </div>
-            <div className="flex flex-col items-start justify-start gap-2.5 w-100 max-sm:w-full">
-              <CustomColorsInput />
+            <div className="flex justify-center w-full max-sm:flex-col max-sm:gap-4">
+              <div className="flex justify-start w-50 max-sm:w-full">
+                <label
+                  htmlFor="colorsMatch"
+                  className="leading-[19px] max-sm:leading-[17px] max-sm:text-[14px] text-gold"
+                >
+                  Filtre couleurs
+                </label>
+              </div>
+              <div className="flex flex-col items-start justify-start gap-2.5 w-100 max-sm:w-full">
+                <Controller
+                  name="colorsMatch"
+                  control={control}
+                  render={({ field }) => (
+                    <select
+                      {...field}
+                      className="w-50 h-[-35px] p-2 rounded-[5px] bg-bg-input text-white border-1 border-borderGold"
+                    >
+                      <option value={"="}>Exactement</option>
+                      <option value={">="}>Inclure</option>
+                      <option value={"<="}>Au minimum</option>
+                    </select>
+                  )}
+                />
+              </div>
             </div>
           </div>
         )}
@@ -336,10 +371,11 @@ export default function SearchCard() {
         </div>
 
         {/* Bouton */}
-        <div className="flex items-center justify-center gap-16 pt-8 w-100 max-sm:w-full">
-          <Button txt="Reset" variant="important" onClick={() => reset()} />
+        <div className="flex items-center justify-center gap-16 pt-8 w-100 max-sm:w-full max-sm:flex-col max-sm:gap-4 max-sm:px-8">
           <Button txt="Rechercher" />
+          <Button txt="Reset" variant="important" onClick={() => reset()} />
         </div>
+        <pre className="text-white">{JSON.stringify(errors, null, 2)}</pre>
       </form>
     </div>
   );
